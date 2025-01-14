@@ -107,7 +107,7 @@ export default function Home() {
               <h2 className="text-xl font-bold mb-3 text-gray-800 group-hover:text-blue-600 transition-colors">
                 {post.title}
               </h2>
-              <p className="text-gray-600 mb-4 line-clamp-2">
+              <p className="text-gray-600 mb-4">
               <ReactMarkdown remarkPlugins={[remarkGfm]}>{post.body}</ReactMarkdown>
               </p>
               <div className="flex justify-between items-center text-sm text-gray-500">
