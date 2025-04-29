@@ -1,5 +1,7 @@
 'use client';
+import styled from 'styled-components';
 import { useRouter } from 'next/navigation';
+
 
 export default function Home() {
   const router = useRouter();
@@ -8,65 +10,177 @@ export default function Home() {
     { id: 1, title: "About Me", path: "/about", description: "저를 소개합니다" },
     { id: 2, title: "Skills", path: "/skills", description: "기술 스택" },
     { id: 3, title: "Project 1", path: "/ohmovie", description: "OhMovie" },
-    { id: 4, title: "Project 2", path: "/project2", description: "Shopping Mall" },
+    { id: 4, title: "Project 2", path: "/applenote", description: "AppleNote" },
     { id: 5, title: "Project 3", path: "/ohmovie", description: "OhMovie" }
   ];
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-gray-100 via-gray-50 to-white">
+    <Wrapper>
       {/* Header */}
-      <header className="fixed top-0 left-0 right-0 bg-white shadow-md z-10">
-        <nav className="max-w-7xl mx-auto px-6 py-4">
-          <ul className="flex space-x-6 justify-center">
+      <Header>
+        <Nav>
+          <MenuList>
             {menuItems.map((item) => (
               <li key={item.id}>
-                <button
-                  onClick={() => router.push(item.path)}
-                  className="text-gray-700 hover:text-blue-500 font-semibold text-lg transition-all"
-                >
+                <MenuButton onClick={() => router.push(item.path)}>
                   {item.title}
-                </button>
+                </MenuButton>
               </li>
             ))}
-          </ul>
-        </nav>
-      </header>
+          </MenuList>
+        </Nav>
+      </Header>
 
       {/* Main Content */}
-      <main className="pt-28 pb-16 px-6">
-        <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+      <Main>
+        <Grid>
           {menuItems.map((item) => (
-            <div
-              key={item.id}
-              onClick={() => router.push(item.path)}
-              className="group bg-white rounded-2xl shadow-lg hover:shadow-2xl transition-shadow p-6 cursor-pointer transform hover:-translate-y-2 transition-transform"
-            >
-              <div className="flex flex-col h-full">
-                <h2 className="text-2xl font-extrabold text-gray-800 mb-3 group-hover:text-blue-600 transition-colors">
-                  {item.title}
-                </h2>
-                <p className="text-gray-600 flex-grow">{item.description}</p>
-                <div className="mt-6">
-                  <span className="text-blue-500 group-hover:text-blue-700 font-medium text-sm">
-                    자세히 보기 →
-                  </span>
-                </div>
+            <Card key={item.id} onClick={() => router.push(item.path)}>
+              <CardTitle>{item.title}</CardTitle>
+              <CardDesc>{item.description}</CardDesc>
+              <div style={{ marginTop: "1.5rem" }}>
+                <CardMore>자세히 보기 →</CardMore>
               </div>
-            </div>
+            </Card>
           ))}
-        </div>
-      </main>
+        </Grid>
+      </Main>
 
       {/* Footer */}
-      <footer className="bg-gray-100 border-t">
-        <div className="max-w-7xl mx-auto px-6 py-8">
-          <div className="text-center text-gray-700">
-            <p className="text-sm">
-              © 2024 <span className="font-semibold">My Portfolio</span>. All rights reserved.
-            </p>
-          </div>
-        </div>
-      </footer>
-    </div>
+      <Footer>
+        <FooterInner>
+          <FooterText>
+            <FooterP>
+              © 2024 <FooterStrong>My Portfolio</FooterStrong>. All rights reserved.
+            </FooterP>
+          </FooterText>
+        </FooterInner>
+      </Footer>
+    </Wrapper>
   );
 }
+
+const Wrapper = styled.div`
+  min-height: 100vh;
+  background: linear-gradient(135deg, #f3f4f6 0%, #f9fafb 50%, #fff 100%);
+`;
+
+const Header = styled.header`
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  background: #fff;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.08);
+  z-index: 10;
+`;
+
+const Nav = styled.nav`
+  max-width: 80rem;
+  margin: 0 auto;
+  padding: 1rem 1.5rem;
+`;
+
+const MenuList = styled.ul`
+  display: flex;
+  justify-content: center;
+  gap: 1.5rem;
+`;
+
+const MenuButton = styled.button`
+  color: #374151;
+  font-weight: 600;
+  font-size: 1.125rem;
+  transition: color 0.2s;
+  background: none;
+  border: none;
+  cursor: pointer;
+  &:hover {
+    color: #3b82f6;
+  }
+`;
+
+const Main = styled.main`
+  padding-top: 7rem;
+  padding-bottom: 4rem;
+  padding-left: 1.5rem;
+  padding-right: 1.5rem;
+`;
+
+const Grid = styled.div`
+  max-width: 80rem;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2rem;
+  @media (min-width: 768px) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  @media (min-width: 1024px) {
+    grid-template-columns: repeat(3, 1fr);
+  }
+`;
+
+const Card = styled.div`
+  background: #fff;
+  border-radius: 1rem;
+  box-shadow: 0 4px 24px rgba(0,0,0,0.08);
+  transition: box-shadow 0.2s, transform 0.2s;
+  padding: 1.5rem;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  &:hover {
+    box-shadow: 0 8px 32px rgba(0,0,0,0.12);
+    transform: translateY(-0.5rem);
+  }
+`;
+
+const CardTitle = styled.h2`
+  font-size: 2rem;
+  font-weight: 800;
+  color: #1f2937;
+  margin-bottom: 0.75rem;
+  transition: color 0.2s;
+  ${Card}:hover & {
+    color: #2563eb;
+  }
+`;
+
+const CardDesc = styled.p`
+  color: #4b5563;
+  flex-grow: 1;
+`;
+
+const CardMore = styled.span`
+  color: #3b82f6;
+  font-weight: 500;
+  font-size: 0.875rem;
+  transition: color 0.2s;
+  ${Card}:hover & {
+    color: #1d4ed8;
+  }
+`;
+
+const Footer = styled.footer`
+  background: #f3f4f6;
+  border-top: 1px solid #e5e7eb;
+`;
+
+const FooterInner = styled.div`
+  max-width: 80rem;
+  margin: 0 auto;
+  padding: 2rem 1.5rem;
+`;
+
+const FooterText = styled.div`
+  text-align: center;
+  color: #374151;
+`;
+
+const FooterP = styled.p`
+  font-size: 0.875rem;
+`;
+
+const FooterStrong = styled.span`
+  font-weight: 600;
+`;
