@@ -68,12 +68,38 @@ export default function Home() {
     },
     { 
       id: 5, 
+      title: "GoodBuyUs", 
+      path: "/goodbuyus", 
+      description: "소셜 플랫폼 서비스. 사용자 간의 소통과 연결을 돕는 커뮤니티 기반 웹 애플리케이션",
+      icon: "👥",
+      color: "#10B981",
+      category: "Project",
+      tech: ["React", "Next.js", "Node.js"]
+    },
+    { 
+      id: 6, 
       title: "Contact", 
       path: "/contact", 
       description: "함께 일하고 싶으시다면 연락주세요!",
       icon: "📬",
-      color: "#3B82F6"
+      color: "#3B82F6",
+      category: "Contact"
     }
+  ];
+
+  const stats = [
+    { label: "완성된 프로젝트", value: "3+", icon: "🚀" },
+    { label: "사용 기술", value: "10+", icon: "⚡" },
+    { label: "개발 경험", value: "2년", icon: "📅" },
+    { label: "커밋 수", value: "500+", icon: "💻" }
+  ];
+  const techStack = [
+    { name: "React", level: 90, color: "#61DAFB" },
+    { name: "Next.js", level: 85, color: "#000000" },
+    { name: "TypeScript", level: 80, color: "#3178C6" },
+    { name: "JavaScript", level: 95, color: "#F7DF1E" },
+    { name: "HTML/CSS", level: 90, color: "#E34F26" },
+    { name: "Node.js", level: 75, color: "#339933" }
   ];
 
   return (
@@ -93,6 +119,16 @@ export default function Home() {
             >
               사용자 경험을 중요시하는 웹 개발자
             </HeroSubtitle>
+             {/* Stats Section */}
+             <StatsContainer>
+              {stats.map((stat, index) => (
+                <StatItem key={index}>
+                  <StatIcon>{stat.icon}</StatIcon>
+                  <StatValue>{stat.value}</StatValue>
+                  <StatLabel>{stat.label}</StatLabel>
+                </StatItem>
+              ))}
+            </StatsContainer>
             <HeroButtons>
               <PrimaryButton onClick={() => {
                 const mainSection = document.getElementById('main-content');
@@ -133,6 +169,30 @@ export default function Home() {
             </ThemeToggle>
           </Nav>
         </Header>
+{/* Tech Stack Section */}
+<TechSection>
+          <SectionTitle>
+            기술 <SectionTitleHighlight>스택</SectionTitleHighlight>
+          </SectionTitle>
+          <TechGrid>
+            {techStack.map((tech, index) => (
+              <TechItem key={index}>
+                <TechHeader>
+                  <TechName>{tech.name}</TechName>
+                  <TechPercent>{tech.level}%</TechPercent>
+                </TechHeader>
+                <TechBar>
+                  <TechProgress 
+                    style={{ 
+                      width: `${tech.level}%`, 
+                      backgroundColor: tech.color 
+                    }} 
+                  />
+                </TechBar>
+              </TechItem>
+            ))}
+          </TechGrid>
+        </TechSection>
 
         {/* Main Content */}
         <Main id="main-content">
@@ -317,6 +377,47 @@ const HeroButtons = styled.div`
   justify-content: center;
   margin-top: 2rem;
 `;
+const StatsContainer = styled.div`
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 2rem;
+  margin: 3rem 0;
+  
+  @media (min-width: 768px) {
+    grid-template-columns: repeat(4, 1fr);
+  }
+`;
+
+const StatItem = styled.div`
+  text-align: center;
+  padding: 1rem;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 1rem;
+  backdrop-filter: blur(10px);
+  transition: transform 0.3s ease;
+  
+  &:hover {
+    transform: translateY(-5px);
+  }
+`;
+
+const StatIcon = styled.div`
+  font-size: 2rem;
+  margin-bottom: 0.5rem;
+`;
+
+const StatValue = styled.div`
+  font-size: 2rem;
+  font-weight: 800;
+  color: #fff;
+  margin-bottom: 0.25rem;
+`;
+
+const StatLabel = styled.div`
+  font-size: 0.875rem;
+  color: rgba(255, 255, 255, 0.8);
+  font-weight: 500;
+`;
 
 const Button = styled.button`
   padding: 0.75rem 2rem;
@@ -464,6 +565,61 @@ const ThemeToggle = styled.button`
   }
 `;
 
+const TechSection = styled.section`
+  padding: 6rem 1.5rem;
+  background: #fff;
+`;
+
+const TechGrid = styled.div`
+  max-width: 60rem;
+  margin: 0 auto;
+  display: grid;
+  gap: 2rem;
+  
+  @media (min-width: 768px) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+`;
+
+const TechItem = styled.div`
+  padding: 1.5rem;
+  background: #f9fafb;
+  border-radius: 1rem;
+  transition: transform 0.3s ease;
+  
+  &:hover {
+    transform: translateY(-5px);
+  }
+`;
+
+const TechHeader = styled.div`
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 1rem;
+`;
+
+const TechName = styled.div`
+  font-weight: 600;
+  color: #1f2937;
+`;
+
+const TechPercent = styled.div`
+  font-weight: 600;
+  color: #4f46e5;
+`;
+
+const TechBar = styled.div`
+  height: 8px;
+  background: #e5e7eb;
+  border-radius: 4px;
+  overflow: hidden;
+`;
+
+const TechProgress = styled.div`
+  height: 100%;
+  border-radius: 4px;
+  transition: width 1s ease;
+`;
 const SectionTitle = styled.h2`
   font-size: 2.5rem;
   font-weight: 800;
