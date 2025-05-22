@@ -2,6 +2,7 @@
 import styled, { keyframes, createGlobalStyle } from 'styled-components';
 import { useRouter } from 'next/navigation';
 import { useState, useEffect } from 'react';
+import { analyzeTechStack, fetchGitHubRepos, fetchGitHubUser, fetchTotalCommits, TechStackItem } from './api/datas/route';
 
 // 글로벌 스타일 추가
 const GlobalStyle = createGlobalStyle`
@@ -15,11 +16,53 @@ const GlobalStyle = createGlobalStyle`
   }
 `;
 
+
+type GitHubStats = {
+  totalCommits: number;
+  totalRepos: number;
+  techStack: TechStackItem[];
+  createdAt: string | null;
+  loading: boolean;
+};
 export default function Home() {
   const router = useRouter();
   const [activeCard, setActiveCard] = useState<number | null>(null);
   const [scrollPosition, setScrollPosition] = useState<number>(0);
+  const [githubStats, setGithubStats] = useState<GitHubStats>({
+    totalCommits: 0,
+    totalRepos: 0,
+    techStack: [],
+    createdAt: null,
+    loading: true
+  });
+  
+  
+  
+  useEffect(() => {
+    const loadGitHubData = async () => {
+      try {
+        const [userInfo, repos, totalCommits, techStack] = await Promise.all([
+          fetchGitHubUser(),
+          fetchGitHubRepos(),
+          fetchTotalCommits(),
+          analyzeTechStack()
+        ]);
 
+        setGithubStats({
+          totalCommits,
+          totalRepos: repos.length,
+          techStack,
+          createdAt: userInfo?.created_at ?? null,
+          loading: false
+        });
+      } catch (error) {
+        console.error('GitHub 데이터 로딩 실패:', error);
+        setGithubStats(prev => ({ ...prev, loading: false }));
+      }
+    };
+
+    loadGitHubData();
+  }, []);
   // 스크롤 위치 추적
   useEffect(() => {
     const handleScroll = () => {
@@ -86,14 +129,33 @@ export default function Home() {
       category: "Contact"
     }
   ];
-
-  const stats = [
-    { label: "완성된 프로젝트", value: "3+", icon: "🚀" },
-    { label: "사용 기술", value: "10+", icon: "⚡" },
-    { label: "개발 경험", value: "2년", icon: "📅" },
-    { label: "커밋 수", value: "500+", icon: "💻" }
+  const dynamicStats = [
+    { 
+      label: "완성된 프로젝트", 
+      value: githubStats.loading ? "..." : `${githubStats.totalRepos}+`, 
+      icon: "🚀" 
+    },
+    { 
+      label: "사용 기술", 
+      value: githubStats.loading ? "..." : `${githubStats.techStack.length}+`, 
+      icon: "⚡" 
+    },
+    { 
+      label: "개발 경험", 
+      value: githubStats.loading 
+        ? "..." 
+        : githubStats.createdAt 
+          ? `${new Date().getFullYear() - new Date(githubStats.createdAt).getFullYear()}년` 
+          : "2년", 
+      icon: "📅" 
+    },
+    { 
+      label: "커밋 수", 
+      value: githubStats.loading ? "..." : `${githubStats.totalCommits}+`, 
+      icon: "💻" 
+    }
   ];
-  const techStack = [
+  const defaultTechStack = [
     { name: "React", level: 90, color: "#61DAFB" },
     { name: "Next.js", level: 85, color: "#000000" },
     { name: "TypeScript", level: 80, color: "#3178C6" },
@@ -101,6 +163,10 @@ export default function Home() {
     { name: "HTML/CSS", level: 90, color: "#E34F26" },
     { name: "Node.js", level: 75, color: "#339933" }
   ];
+
+  // 사용할 기술 스택 (GitHub 데이터 우선, 없으면 기본값 사용)
+  const displayTechStack = githubStats.techStack.length > 0 ? githubStats.techStack : defaultTechStack;
+
 
   return (
     <>
@@ -121,7 +187,7 @@ export default function Home() {
             </HeroSubtitle>
              {/* Stats Section */}
              <StatsContainer>
-              {stats.map((stat, index) => (
+              {dynamicStats.map((stat, index) => (
                 <StatItem key={index}>
                   <StatIcon>{stat.icon}</StatIcon>
                   <StatValue>{stat.value}</StatValue>
@@ -169,13 +235,13 @@ export default function Home() {
             </ThemeToggle>
           </Nav>
         </Header>
-{/* Tech Stack Section */}
-<TechSection>
+        {/* Tech Stack Section */}
+        <TechSection>
           <SectionTitle>
             기술 <SectionTitleHighlight>스택</SectionTitleHighlight>
           </SectionTitle>
           <TechGrid>
-            {techStack.map((tech, index) => (
+            {displayTechStack.map((tech, index) => (
               <TechItem key={index}>
                 <TechHeader>
                   <TechName>{tech.name}</TechName>
