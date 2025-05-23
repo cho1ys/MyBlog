@@ -73,7 +73,6 @@ export default function ProjectDetail() {
   }, []);
 
   const formatDate = (date: string) => {
-    // Use fixed formatting to ensure server/client consistency
     const dateObj = new Date(date);
     const year = dateObj.getFullYear();
     const month = dateObj.getMonth() + 1;
@@ -109,7 +108,6 @@ export default function ProjectDetail() {
   if (post) {
     return (
       <Wrapper>
-        {/* Header - Only apply dynamic styles on client-side */}
         <Header style={isMounted ? { 
           opacity: scrollPosition > 100 ? 1 : 0,
           pointerEvents: scrollPosition > 100 ? 'all' : 'none'
@@ -120,7 +118,6 @@ export default function ProjectDetail() {
           </HeaderContainer>
         </Header>
 
-        {/* Hero Section with Parallax - Only apply dynamic styles on client-side */}
         <ProjectHero 
           $backgroundImage={post.thumbnail || undefined}
           style={isMounted ? { 
@@ -148,7 +145,6 @@ export default function ProjectDetail() {
           </ProjectHeroContent>
         </ProjectHero>
 
-        {/* Main Content */}
         <ContentContainer>
           <ContentWrapper>
             <MarkdownContainer>
@@ -198,7 +194,6 @@ export default function ProjectDetail() {
             </MarkdownContainer>
           </ContentWrapper>
           
-          {/* Sidebar */}
           <Sidebar>
             <SidebarCard>
               <SidebarCardTitle>Project Info</SidebarCardTitle>
@@ -248,7 +243,6 @@ export default function ProjectDetail() {
           </Sidebar>
         </ContentContainer>
 
-        {/* Footer */}
         <Footer>
           <FooterInner>
             <FooterText>
@@ -266,7 +260,6 @@ export default function ProjectDetail() {
   return null;
 }
 
-// Animations
 const spin = keyframes`
   to { transform: rotate(360deg); }
 `;
@@ -276,7 +269,6 @@ const fadeIn = keyframes`
   to { opacity: 1; transform: translateY(0); }
 `;
 
-// Styled Components
 const Wrapper = styled.div`
   background-color: #f9fafb;
   min-height: 100vh;

@@ -4,7 +4,6 @@ import { useRouter } from 'next/navigation';
 import { useState, useEffect } from 'react';
 import { analyzeTechStack, fetchGitHubRepos, fetchGitHubUser, fetchTotalCommits, TechStackItem } from './api/datas/route';
 
-// 글로벌 스타일 추가
 const GlobalStyle = createGlobalStyle`
   @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap');
   
@@ -63,7 +62,6 @@ export default function Home() {
 
     loadGitHubData();
   }, []);
-  // 스크롤 위치 추적
   useEffect(() => {
     const handleScroll = () => {
       const position = window.scrollY;
@@ -172,7 +170,6 @@ export default function Home() {
     <>
       <GlobalStyle />
       <Wrapper>
-        {/* Hero Section */}
         <Hero>
           <HeroContent>
             <HeroTitle
@@ -185,7 +182,6 @@ export default function Home() {
             >
               사용자 경험을 중요시하는 웹 개발자
             </HeroSubtitle>
-             {/* Stats Section */}
              <StatsContainer>
               {dynamicStats.map((stat, index) => (
                 <StatItem key={index}>
@@ -212,7 +208,6 @@ export default function Home() {
           <ScrollIndicator />
         </Hero>
 
-        {/* Header - 스크롤 시 보이는 고정 네비게이션 */}
         <Header style={{ 
           opacity: scrollPosition > 300 ? 1 : 0,
           pointerEvents: scrollPosition > 300 ? 'all' : 'none'
@@ -235,7 +230,6 @@ export default function Home() {
             </ThemeToggle>
           </Nav>
         </Header>
-        {/* Tech Stack Section */}
         <TechSection>
           <SectionTitle>
             기술 <SectionTitleHighlight>스택</SectionTitleHighlight>
@@ -260,7 +254,6 @@ export default function Home() {
           </TechGrid>
         </TechSection>
 
-        {/* Main Content */}
         <Main id="main-content">
           <SectionTitle>
             <SectionTitleHighlight>Projects</SectionTitleHighlight> & Skills
@@ -289,7 +282,6 @@ export default function Home() {
           </Grid>
         </Main>
 
-        {/* Timeline Section */}
         <Timeline>
           <SectionTitle>개발 여정</SectionTitle>
           <TimelineContainer>
@@ -328,7 +320,6 @@ export default function Home() {
           </TimelineContainer>
         </Timeline>
 
-        {/* Footer */}
         <Footer>
           <FooterInner>
             <FooterGrid>
@@ -366,7 +357,6 @@ export default function Home() {
   );
 }
 
-// 애니메이션 정의
 const fadeIn = keyframes`
   from { opacity: 0; transform: translateY(20px); }
   to { opacity: 1; transform: translateY(0); }
@@ -378,7 +368,6 @@ const scroll = keyframes`
   100% { transform: translateY(0); opacity: 1; }
 `;
 
-// 컴포넌트 스타일링
 const Wrapper = styled.div`
   min-height: 100vh;
   background: linear-gradient(135deg, #f5f7fa 0%, #e4e7eb 100%);

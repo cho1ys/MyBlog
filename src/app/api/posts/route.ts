@@ -14,7 +14,6 @@ export async function POST(req: Request) {
       );
     }
 
-    // GraphQL 요청 본문 구성
     const reqBody = {
       operationName: 'ReadPost',
       variables: { username, url_slug },
@@ -143,8 +142,8 @@ export async function POST(req: Request) {
     const images: string[] = [];
 
     if (isMarkdown) {
-      // 마크다운을 HTML로 변환 (비동기 처리 필요시 await 사용)
-      const htmlContent = await marked(postBody);  // await 추가
+      // 마크다운을 HTML로 변환 
+      const htmlContent = await marked(postBody);  
 
       // <img> 태그에서 이미지 URL을 추출하는 정규식
       const imgRegex = /<img[^>]+src="([^">]+)"/g;

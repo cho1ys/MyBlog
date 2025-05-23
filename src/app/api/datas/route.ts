@@ -6,7 +6,6 @@ type GitHubUser = {
     followers: number;
     following: number;
     created_at: string;
-    // 필요시 다른 필드 추가
   };
   
   type GitHubRepo = {
@@ -22,7 +21,7 @@ type GitHubUser = {
     color: string;
   };
   
-  const GITHUB_USERNAME = 'cho1ys'; // 실제 GitHub 사용자명으로 교체
+  const GITHUB_USERNAME = 'cho1ys'; 
   const GITHUB_TOKEN = process.env.NEXT_PUBLIC_GITHUB_TOKEN;
   
   const githubAPI = {

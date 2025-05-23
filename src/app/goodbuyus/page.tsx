@@ -98,7 +98,6 @@ export default function ProjectDetail() {
   if (post) {
     return (
       <Wrapper>
-        {/* Header */}
         <Header style={{ 
           opacity: scrollPosition > 100 ? 1 : 0,
           pointerEvents: scrollPosition > 100 ? 'all' : 'none'
@@ -109,7 +108,6 @@ export default function ProjectDetail() {
           </HeaderContainer>
         </Header>
 
-        {/* Hero Section with Parallax */}
         <ProjectHero 
           $backgroundImage={post.thumbnail || undefined}
           style={{ 
@@ -137,7 +135,6 @@ export default function ProjectDetail() {
           </ProjectHeroContent>
         </ProjectHero>
 
-        {/* Main Content */}
         <ContentContainer>
           <ContentWrapper>
             <MarkdownContainer>
@@ -187,7 +184,6 @@ export default function ProjectDetail() {
             </MarkdownContainer>
           </ContentWrapper>
           
-          {/* Sidebar */}
           <Sidebar>
             <SidebarCard>
               <SidebarCardTitle>Project Info</SidebarCardTitle>
@@ -237,7 +233,6 @@ export default function ProjectDetail() {
           </Sidebar>
         </ContentContainer>
 
-        {/* Footer */}
         <Footer>
           <FooterInner>
             <FooterText>
@@ -255,7 +250,6 @@ export default function ProjectDetail() {
   return null;
 }
 
-// Animations
 const spin = keyframes`
   to { transform: rotate(360deg); }
 `;
@@ -265,7 +259,6 @@ const fadeIn = keyframes`
   to { opacity: 1; transform: translateY(0); }
 `;
 
-// Styled Components
 const Wrapper = styled.div`
   background-color: #f9fafb;
   min-height: 100vh;
