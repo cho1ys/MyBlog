@@ -17,21 +17,20 @@ export default function Footer() {
             <FooterTitle>Links</FooterTitle>
             <FooterLinks>
               <FooterLink>GitHub</FooterLink>
-              <FooterLink>LinkedIn</FooterLink>
               <FooterLink>Twitter</FooterLink>
             </FooterLinks>
           </FooterCol>
           <FooterCol>
             <FooterTitle>Contact</FooterTitle>
             <FooterContact>
-              <FooterContactItem>email@example.com</FooterContactItem>
+              <FooterContactItem>yschoi0119@naver.com</FooterContactItem>
               <FooterContactItem>Seoul, South Korea</FooterContactItem>
             </FooterContact>
           </FooterCol>
         </FooterGrid>
         <FooterDivider />
         <FooterCopyright>
-          © 2024 <FooterStrong>My Portfolio</FooterStrong>. All rights reserved.
+          © 2025 <FooterStrong>My Portfolio</FooterStrong>. All rights reserved.
         </FooterCopyright>
       </FooterInner>
     </FooterOuter>
