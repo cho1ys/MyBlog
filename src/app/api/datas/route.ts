@@ -126,7 +126,6 @@ type GitHubUser = {
           level: Math.round((bytes / totalBytes) * 100),
           color: getLanguageColor(language),
         }));
-  
       return techStack;
     } catch (error) {
       console.error('기술 스택 분석 실패:', error);
