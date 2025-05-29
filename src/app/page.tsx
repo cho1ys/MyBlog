@@ -49,12 +49,12 @@ export default function Home() {
   }, [isClientReady]);
 
   const menuItems = [
-    { id: 1, title: "About Me", path: "/about", description: "저를 소개합니다", icon: "👨‍💻", color: "#4F46E5" },
-    { id: 2, title: "Skills", path: "/skills", description: "React, Next.js, TypeScript 등 프론트엔드 개발에 필요한 기술 스택들을 소개합니다", icon: "🛠️", color: "#10B981" },
-    { id: 3, title: "OhMovie", path: "/ohmovie", description: "영화 정보 검색 및 추천 서비스. React와 영화 API를 활용한 반응형 웹 애플리케이션", icon: "🎬", color: "#F59E0B" },
-    { id: 4, title: "AppleNote", path: "/applenote", description: "애플 스타일의 메모 웹앱. React와 LocalStorage를 활용한 SPA", icon: "📝", color: "#EC4899" },
-    { id: 5, title: "GoodBuyUs", path: "/goodbuyus", description: "소셜 플랫폼 서비스. 사용자 간의 소통과 연결을 돕는 커뮤니티 기반 웹 애플리케이션", icon: "👥", color: "#10B981" },
-    { id: 6, title: "Contact", path: "/contact", description: "함께 일하고 싶으시다면 연락주세요!", icon: "📬", color: "#3B82F6" }
+    // { id: 1, title: "About Me", path: "/about", description: "저를 소개합니다", icon: "👨‍💻", color: "#4F46E5" },
+    // { id: 2, title: "Skills", path: "/skills", description: "React, Next.js, TypeScript 등 프론트엔드 개발에 필요한 기술 스택들을 소개합니다", icon: "🛠️", color: "#10B981" },
+    { id: 1, title: "OhMovie", path: "/ohmovie", description: "영화 정보 검색 및 추천 서비스. React와 영화 API를 활용한 반응형 웹 애플리케이션", icon: "🎬", color: "#F59E0B" },
+    { id: 2, title: "AppleNote", path: "/applenote", description: "애플 스타일의 메모 웹앱. React와 LocalStorage를 활용한 SPA", icon: "📝", color: "#EC4899" },
+    { id: 3, title: "GoodBuyUs", path: "/goodbuyus", description: "소셜 플랫폼 서비스. 사용자 간의 소통과 연결을 돕는 커뮤니티 기반 웹 애플리케이션", icon: "👥", color: "#10B981" },
+    // { id: 6, title: "Contact", path: "/contact", description: "함께 일하고 싶으시다면 연락주세요!", icon: "📬", color: "#3B82F6" }
   ];
 
   const handleViewPortfolio = () => {

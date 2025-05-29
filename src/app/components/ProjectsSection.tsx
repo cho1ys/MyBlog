@@ -16,7 +16,7 @@ export default function ProjectsSection({ menuItems }: ProjectsSectionProps) {
   return (
     <Main id="main-content">
       <SectionTitle>
-        <SectionTitleHighlight>Projects</SectionTitleHighlight> & Skills
+        <SectionTitleHighlight>Projects</SectionTitleHighlight>
       </SectionTitle>
       <Grid>
         {menuItems.map((item) => (
