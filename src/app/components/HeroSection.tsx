@@ -22,9 +22,8 @@ export default function HeroSection({
     if (!isClient) {
       // 서버 사이드에서는 기본값 반환
       return [
-        { label: "완성된 프로젝트", value: "5+", icon: "🚀" },
+        { label: "Git Repository 개수", value: "5+", icon: "🚀" },
         { label: "사용 기술", value: "10+", icon: "⚡" },
-        { label: "개발 경험", value: "2년", icon: "📅" },
         { label: "커밋 수", value: "500+", icon: "💻" }
       ];
     }
@@ -32,29 +31,21 @@ export default function HeroSection({
     // 클라이언트에서는 실제 데이터 사용
     return [
       { 
-        label: "완성된 프로젝트", 
+        label: "Git Repository 개수", 
         value: githubStats.loading ? "..." : `${githubStats.totalRepos}+`, 
         icon: "🚀" 
-      },
-      { 
-        label: "사용 기술", 
-        value: githubStats.loading ? "..." : `${githubStats.techStack.length}+`, 
-        icon: "⚡" 
-      },
-      { 
-        label: "개발 경험", 
-        value: githubStats.loading 
-          ? "..." 
-          : githubStats.createdAt 
-            ? `${new Date().getFullYear() - new Date(githubStats.createdAt).getFullYear()}년` 
-            : "2년", 
-        icon: "📅" 
       },
       { 
         label: "커밋 수", 
         value: githubStats.loading ? "..." : `${githubStats.totalCommits}+`, 
         icon: "💻" 
+      },
+      { 
+        label: "사용 기술", 
+        value: githubStats.loading ? "..." : `${githubStats.techStack.length}+`, 
+        icon: "⚡" 
       }
+   
     ];
   };
 
@@ -182,7 +173,7 @@ const StatsContainer = styled.div`
   margin: 3rem 0;
   
   @media (min-width: 768px) {
-    grid-template-columns: repeat(4, 1fr);
+    grid-template-columns: repeat(3, 1fr);
   }
 `;
 
