@@ -108,68 +108,69 @@ export default function TechStackSection({ techStack }: TechStackSectionProps) {
   const displayTechStack = isClient 
     ? (techStack.length > 0 ? techStack : defaultTechStack)
     : defaultTechStack;
+  console.log(displayTechStack);
 
-  const TechLogo = [
-    { 
-      name: "React", 
-      logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg"
-    },
-    { 
-      name: "TypeScript", 
-      logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/typescript/typescript-original.svg"
-    },
-    { 
-      name: "JavaScript", 
-      logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg"
-    },
-    { 
-      name: "Styled Components", 
-      logo: "https://styled-components.com/logo.png"
-    },
-    { 
-      name: "React Router", 
-      logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/reactrouter/reactrouter-original.svg"
-    },
-    { 
-      name: "Axios", 
-      logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/axios/axios-plain.svg"
-    },
-    { 
-      name: "MSW", 
-      logo: "https://mswjs.io/logo.svg"
-    },
-    { 
-      name: "MongoDB", 
-      logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mongodb/mongodb-original.svg"
-    },
-    { 
-      name: "Express", 
-      logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/express/express-original.svg"
-    },
-    { 
-      name: "Firebase", 
-      logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/firebase/firebase-plain.svg"
-    },
-    { 
-      name: "JWT", 
-      logo: "https://jwt.io/img/pic_logo.svg"
-    },
-    { 
-      name: "Redux", 
-      logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/redux/redux-original.svg"
-    },
-    { 
-      name: "Vite", 
-      logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vitejs/vitejs-original.svg"
-    },
-    { 
-      name: "React Query", 
-      logo: "https://react-query-v3.tanstack.com/_next/static/images/emblem-light-628080660fddb35787ff6c77e97ca43e.svg"
-    },
-    { 
-      name: "Tailwind CSS", 
-      logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/tailwindcss/tailwindcss-plain.svg"
-    }
+    const TechLogo = [
+      { 
+        name: "React", 
+        logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg"
+      },
+      { 
+        name: "TypeScript", 
+        logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/typescript/typescript-original.svg"
+      },
+      { 
+        name: "JavaScript", 
+        logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg"
+      },
+      { 
+        name: "Styled Components", 
+        logo: "https://cdn.jsdelivr.net/npm/simple-icons@v11/icons/styledcomponents.svg"
+      },
+      { 
+        name: "React Router", 
+        logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/reactrouter/reactrouter-original.svg"
+      },
+      { 
+        name: "Axios", 
+        logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/axios/axios-plain.svg"
+      },
+      { 
+        name: "MSW", 
+        logo: "https://raw.githubusercontent.com/mswjs/msw/main/media/msw-logo.svg"
+      },
+      { 
+        name: "MongoDB", 
+        logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mongodb/mongodb-original.svg"
+      },
+      { 
+        name: "Express", 
+        logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/express/express-original.svg"
+      },
+      { 
+        name: "Firebase", 
+        logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/firebase/firebase-plain.svg"
+      },
+      { 
+        name: "JWT", 
+        logo: "https://jwt.io/img/pic_logo.svg"
+      },
+      { 
+        name: "Redux", 
+        logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/redux/redux-original.svg"
+      },
+      { 
+        name: "Vite", 
+        logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vitejs/vitejs-original.svg"
+      },
+      { 
+        name: "React Query", 
+        logo: "https://cdn.jsdelivr.net/npm/simple-icons@v11/icons/reactquery.svg"
+      },
+      { 
+        name: "Tailwind CSS", 
+        logo: "https://cdn.jsdelivr.net/npm/simple-icons@v11/icons/tailwindcss.svg"
+      }
   ];
 
   return (
