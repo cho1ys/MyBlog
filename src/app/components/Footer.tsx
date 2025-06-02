@@ -17,13 +17,14 @@ export default function Footer() {
             <FooterTitle>Links</FooterTitle>
             <FooterLinks>
               <FooterLink>GitHub</FooterLink>
-              <FooterLink>Twitter</FooterLink>
+              <FooterLink>Velog</FooterLink>
             </FooterLinks>
           </FooterCol>
           <FooterCol>
             <FooterTitle>Contact</FooterTitle>
             <FooterContact>
               <FooterContactItem>yschoi0119@naver.com</FooterContactItem>
+              <FooterContactItem>010-4935-8654</FooterContactItem>
               <FooterContactItem>Seoul, South Korea</FooterContactItem>
             </FooterContact>
           </FooterCol>
