@@ -108,7 +108,6 @@ export default function TechStackSection({ techStack }: TechStackSectionProps) {
   const displayTechStack = isClient 
     ? (techStack.length > 0 ? techStack : defaultTechStack)
     : defaultTechStack;
-  console.log(displayTechStack);
 
     const TechLogo = [
       { 
@@ -176,7 +175,7 @@ export default function TechStackSection({ techStack }: TechStackSectionProps) {
   return (
     <TechSection>
       <SectionTitle>
-        기술 <SectionTitleHighlight>스택</SectionTitleHighlight>
+        Tech <SectionTitleHighlight>Stack</SectionTitleHighlight>
       </SectionTitle>
       
       {/* 정사각형 로고 그리드 섹션 */}
@@ -198,9 +197,9 @@ export default function TechStackSection({ techStack }: TechStackSectionProps) {
 
       {/* GitHub 스타일 퍼센트 그래프 섹션 */}
       <ProgressSection>
-        <ProgressTitle>Most Used Languages</ProgressTitle>
+        <ProgressTitle>Most Used Languages in GitHub</ProgressTitle>
         <ProgressGrid>
-          {displayTechStack.map((tech, index) => (
+          {displayTechStack.filter((tech) => tech.level > 0).map((tech, index) => (
             <ProgressItem key={index}>
               <ProgressHeader>
                 <ProgressIconWrapper>
