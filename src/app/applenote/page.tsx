@@ -11,7 +11,6 @@ interface VelogPost {
   body: string;
   thumbnail: string | null;
   url: string;
-  createdAt: string;
 }
 
 export default function ProjectDetail() {
@@ -19,7 +18,8 @@ export default function ProjectDetail() {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
   const [scrollPosition, setScrollPosition] = useState<number>(0);
-
+  const postUrl = 'https://velog.io/@yschoi0119/%EB%8D%B0%EB%B8%8C%EC%BD%94%EC%8A%A4-3%EC%B0%A8-%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8-AppleNote';
+  const sourceUrl = 'https://github.com/cho1ys/NFE1-2-3-AppleNote'
   useEffect(() => {
     const handleScroll = () => {
       const position = window.scrollY;
@@ -63,13 +63,6 @@ export default function ProjectDetail() {
     fetchPost();
   }, []);
 
-  const formatDate = (date: string) => {
-    return new Date(date).toLocaleDateString('ko-KR', {
-      year: 'numeric',
-      month: 'long',
-      day: 'numeric',
-    });
-  };
 
   if (loading) {
     return (
@@ -121,10 +114,10 @@ export default function ProjectDetail() {
             <ProjectMeta>
               <ProjectDate>
                 <DateIcon>📅</DateIcon>
-                {formatDate(post.createdAt)}
+                2024. 10. 22 - 2024. 11. 05
               </ProjectDate>
               <ProjectSourceLink 
-                href={post.url} 
+                href={postUrl} 
                 target="_blank" 
                 rel="noopener noreferrer"
               >
@@ -189,11 +182,11 @@ export default function ProjectDetail() {
               <SidebarCardTitle>Project Info</SidebarCardTitle>
               <SidebarItem>
                 <SidebarItemLabel>Date</SidebarItemLabel>
-                <SidebarItemValue>{formatDate(post.createdAt)}</SidebarItemValue>
+                <SidebarItemValue>2024. 10. 22 - 2024. 11. 05</SidebarItemValue>
               </SidebarItem>
               <SidebarItem>
                 <SidebarItemLabel>Category</SidebarItemLabel>
-                <SidebarItemValue>Web Development</SidebarItemValue>
+                <SidebarItemValue>Blog</SidebarItemValue>
               </SidebarItem>
               <SidebarItem>
                 <SidebarItemLabel>Tech Stack</SidebarItemLabel>
@@ -204,7 +197,7 @@ export default function ProjectDetail() {
                 </TechStack>
               </SidebarItem>
               <SidebarButton 
-                href={post.url} 
+                href={sourceUrl} 
                 target="_blank" 
                 rel="noopener noreferrer"
               >
@@ -222,9 +215,9 @@ export default function ProjectDetail() {
                   </RelatedProjectLink>
                 </RelatedProject>
                 <RelatedProject>
-                  <RelatedProjectLink href="/applenote">
-                    <RelatedProjectTitle>AppleNote</RelatedProjectTitle>
-                    <RelatedProjectDesc>애플 스타일의 메모 웹앱</RelatedProjectDesc>
+                  <RelatedProjectLink href="/goodbuyus">
+                    <RelatedProjectTitle>GoodBuyUs</RelatedProjectTitle>
+                    <RelatedProjectDesc>공동구매 서비스</RelatedProjectDesc>
                   </RelatedProjectLink>
                 </RelatedProject>
               </RelatedProjectsList>
@@ -689,7 +682,7 @@ const SidebarButton = styled.a`
   text-decoration: none;
   margin-top: 0.5rem;
   transition: background-color 0.2s;
-  
+  cursor: pointer;
   &:hover {
     background-color: #4338ca;
   }

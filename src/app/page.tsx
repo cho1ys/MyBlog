@@ -23,7 +23,7 @@ const ProjectsSection = dynamic(() => import('./components/ProjectsSection'), {
   ssr: false
 });
 
-const TimelineSection = dynamic(() => import('./components/TimelineSection'), {
+const ProfileSection = dynamic(() => import('./components/SimpleProfileSection'), {
   ssr: false
 });
 
@@ -96,7 +96,7 @@ export default function Home() {
       />
       <TechStackSection techStack={githubStats.techStack} />
       <ProjectsSection menuItems={menuItems} />
-      <TimelineSection />
+      <ProfileSection />
       <Footer />
     </Wrapper>
   );
