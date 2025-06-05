@@ -1,10 +1,6 @@
+import { analyzeTechStack, fetchGitHubRepos, fetchGitHubUser, fetchTotalCommits } from '@/app/lib/github';
 import { NextResponse } from 'next/server';
-import {
-  fetchGitHubUser,
-  fetchGitHubRepos,
-  fetchTotalCommits,
-  analyzeTechStack,
-} from '@/app/lib/github';
+
 
 export async function GET() {
   try {
