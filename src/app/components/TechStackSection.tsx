@@ -2,7 +2,7 @@
 import styled from 'styled-components';
 import { useClientOnly } from '../hooks/useClientOnly';
 import { SectionTitle, SectionTitleHighlight } from '../page';
-import { TechStackItem } from '../api/datas/route';
+import { TechStackItem } from '../lib/github';
 
 interface TechStackSectionProps {
   techStack: TechStackItem[];
