@@ -1,6 +1,10 @@
-import { analyzeTechStack, fetchGitHubRepos, fetchGitHubUser, fetchTotalCommits } from '@/app/lib/github';
+import {
+  analyzeTechStack,
+  fetchGitHubRepos,
+  fetchGitHubUser,
+  fetchTotalCommits,
+} from '@/app/lib/github';
 import { NextResponse } from 'next/server';
-
 
 export async function GET() {
   try {
@@ -17,6 +21,11 @@ export async function GET() {
     });
   } catch (error) {
     console.error('에러 발생:', error);
-    return null;
+
+    // ✅ 에러 응답도 Response 타입으로
+    return NextResponse.json(
+      { error: 'Internal Server Error' },
+      { status: 500 }
+    );
   }
 }

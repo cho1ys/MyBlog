@@ -1,7 +1,7 @@
 'use client';
 import React from 'react';
 import styled from 'styled-components';
-import { SectionTitle } from '../page';
+import { SectionTitle, SectionTitleHighlight } from '../page';
 
 export default function SimpleProfileSection() {
   const profileData = [
@@ -50,7 +50,7 @@ export default function SimpleProfileSection() {
 
   return (
     <ProfileSection>
-      <SectionTitle>이력</SectionTitle>
+      <SectionTitle><SectionTitleHighlight>Experience &</SectionTitleHighlight> Education</SectionTitle>
       <ProfileContainer>
         {profileData.map((item, index) => (
           <ProfileCard key={index}>
@@ -60,7 +60,7 @@ export default function SimpleProfileSection() {
                  {Array.isArray(item.desc)
                   ? item.desc.map((line, idx) => <div key={idx}>{line}</div>)
                   : item.desc}
-                  </ProfileDesc>
+              </ProfileDesc>
               <CategoryTagContainer>
                 {item.category.split(', ').map((cat, idx) => (
                   <CategoryTag key={idx} style={{ 
@@ -125,7 +125,7 @@ const ProfileTitle = styled.h3`
   line-height: 1.4;
 `;
 
-const ProfileDesc = styled.p`
+const ProfileDesc = styled.div`
   color: #4b5563;
   font-size: 0.9rem;
   line-height: 1.6;
@@ -135,7 +135,7 @@ const ProfileDesc = styled.p`
 const CategoryTagContainer = styled.div`
   position: absolute;
   top: 1rem;
-  right: 2rem;
+  right: 1rem;
   display: flex;
   gap: 0.5rem;
   flex-wrap: wrap;
