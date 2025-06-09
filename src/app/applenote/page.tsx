@@ -96,8 +96,8 @@ export default function ProjectDetail() {
           pointerEvents: scrollPosition > 100 ? 'all' : 'none'
         }}>
           <HeaderContainer>
-            <Logo>Portfolio</Logo>
-            <BackButton onClick={() => window.history.back()}>← Back to Projects</BackButton>
+            <Logo>AppleNote</Logo>
+            <BackButton onClick={() => window.history.back()}>← Back to Home</BackButton>
           </HeaderContainer>
         </Header>
 

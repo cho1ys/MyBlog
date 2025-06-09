@@ -20,13 +20,13 @@ export default function ProjectDetail() {
   const [error, setError] = useState<string | null>(null);
   const [scrollPosition, setScrollPosition] = useState<number>(0);
   const [isMounted, setIsMounted] = useState(false);
-
-  // Mark component as mounted (client-side only)
+  const postUrl = 'https://velog.io/@yschoi0119/%EB%8D%B0%EB%B8%8C%EC%BD%94%EC%8A%A42%EC%B0%A8-%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8-%EC%98%A4%EC%98%81%ED%99%94';
+  const sourceUrl = 'https://github.com/cho1ys/NFE1_2_Oh_Younghwa'
+  
   useEffect(() => {
     setIsMounted(true);
   }, []);
 
-  // Handle scroll events (client-side only)
   useEffect(() => {
     if (!isMounted) return;
     
@@ -72,15 +72,6 @@ export default function ProjectDetail() {
     fetchPost();
   }, []);
 
-  const formatDate = (date: string) => {
-    const dateObj = new Date(date);
-    const year = dateObj.getFullYear();
-    const month = dateObj.getMonth() + 1;
-    const day = dateObj.getDate();
-    
-    return `${year}년 ${month}월 ${day}일`;
-  };
-
   if (loading) {
     return (
       <LoadingContainer>
@@ -113,8 +104,8 @@ export default function ProjectDetail() {
           pointerEvents: scrollPosition > 100 ? 'all' : 'none'
         } : { opacity: 0, pointerEvents: 'none' }}>
           <HeaderContainer>
-            <Logo>Portfolio</Logo>
-            <BackButton onClick={() => window.history.back()}>← Back to Projects</BackButton>
+            <Logo>OhMovie</Logo>
+            <BackButton onClick={() => window.history.back()}>← Back to Home</BackButton>
           </HeaderContainer>
         </Header>
 
@@ -131,10 +122,10 @@ export default function ProjectDetail() {
             <ProjectMeta>
               <ProjectDate>
                 <DateIcon>📅</DateIcon>
-                {formatDate(post.createdAt)}
+                2024.09 - 2024.10
               </ProjectDate>
               <ProjectSourceLink 
-                href={post.url} 
+                href={postUrl} 
                 target="_blank" 
                 rel="noopener noreferrer"
               >
@@ -199,7 +190,7 @@ export default function ProjectDetail() {
               <SidebarCardTitle>Project Info</SidebarCardTitle>
               <SidebarItem>
                 <SidebarItemLabel>Date</SidebarItemLabel>
-                <SidebarItemValue>{formatDate(post.createdAt)}</SidebarItemValue>
+                <SidebarItemValue>2024.09 - 2024.10</SidebarItemValue>
               </SidebarItem>
               <SidebarItem>
                 <SidebarItemLabel>Category</SidebarItemLabel>
@@ -215,7 +206,7 @@ export default function ProjectDetail() {
                 </TechStack>
               </SidebarItem>
               <SidebarButton 
-                href={post.url} 
+                href={sourceUrl} 
                 target="_blank" 
                 rel="noopener noreferrer"
               >
@@ -699,7 +690,7 @@ const SidebarButton = styled.a`
   text-decoration: none;
   margin-top: 0.5rem;
   transition: background-color 0.2s;
-  
+  cursor: pointer;
   &:hover {
     background-color: #dc2626;
   }

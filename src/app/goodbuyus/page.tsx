@@ -19,6 +19,8 @@ export default function ProjectDetail() {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
   const [scrollPosition, setScrollPosition] = useState<number>(0);
+  const postUrl = 'https://velog.io/@yschoi0119/%EB%8D%B0%EB%B8%8C%EC%BD%94%EC%8A%A4-%EC%B5%9C%EC%A2%85-%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8-GoodBuyUs';
+  const sourceUrl = 'https://github.com/cho1ys/GoodBuyUs'
 
   useEffect(() => {
     const handleScroll = () => {
@@ -63,14 +65,6 @@ export default function ProjectDetail() {
     fetchPost();
   }, []);
 
-  const formatDate = (date: string) => {
-    return new Date(date).toLocaleDateString('ko-KR', {
-      year: 'numeric',
-      month: 'long',
-      day: 'numeric',
-    });
-  };
-
   if (loading) {
     return (
       <LoadingContainer>
@@ -103,8 +97,8 @@ export default function ProjectDetail() {
           pointerEvents: scrollPosition > 100 ? 'all' : 'none'
         }}>
           <HeaderContainer>
-            <Logo>Portfolio</Logo>
-            <BackButton onClick={() => window.history.back()}>← Back to Projects</BackButton>
+            <Logo>GoodBuyUs</Logo>
+            <BackButton onClick={() => window.history.back()}>← Back to Home</BackButton>
           </HeaderContainer>
         </Header>
 
@@ -121,10 +115,10 @@ export default function ProjectDetail() {
             <ProjectMeta>
               <ProjectDate>
                 <DateIcon>📅</DateIcon>
-                {formatDate(post.createdAt)}
+                24.11 ~ 25.01 (~25.04 연장)
               </ProjectDate>
               <ProjectSourceLink 
-                href={post.url} 
+                href={postUrl} 
                 target="_blank" 
                 rel="noopener noreferrer"
               >
@@ -189,7 +183,7 @@ export default function ProjectDetail() {
               <SidebarCardTitle>Project Info</SidebarCardTitle>
               <SidebarItem>
                 <SidebarItemLabel>Date</SidebarItemLabel>
-                <SidebarItemValue>{formatDate(post.createdAt)}</SidebarItemValue>
+                <SidebarItemValue>24.11 ~ 25.01 (~25.04 연장)</SidebarItemValue>
               </SidebarItem>
               <SidebarItem>
                 <SidebarItemLabel>Category</SidebarItemLabel>
@@ -205,7 +199,7 @@ export default function ProjectDetail() {
                 </TechStack>
               </SidebarItem>
               <SidebarButton 
-                href={post.url} 
+                href={sourceUrl} 
                 target="_blank" 
                 rel="noopener noreferrer"
               >
