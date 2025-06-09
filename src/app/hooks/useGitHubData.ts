@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
-import { analyzeTechStack, fetchGitHubRepos, fetchGitHubUser, fetchTotalCommits } from '../api/datas/route';
 import { GitHubStats } from '../types';
+import { analyzeTechStack, fetchGitHubRepos, fetchGitHubUser, fetchTotalCommits } from '../lib/github';
 
 export function useGitHubData() {
   const [githubStats, setGithubStats] = useState<GitHubStats>({
