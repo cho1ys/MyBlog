@@ -1,7 +1,8 @@
 'use client';
 import React from 'react';
 import styled from 'styled-components';
-import { SectionTitle, SectionTitleHighlight } from '../page';
+import { SectionTitle, SectionTitleHighlight } from '../hooks/ClientHome';
+
 
 export default function SimpleProfileSection() {
   const profileData = [

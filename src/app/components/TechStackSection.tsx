@@ -1,8 +1,9 @@
 'use client';
 import styled from 'styled-components';
 import { useClientOnly } from '../hooks/useClientOnly';
-import { SectionTitle, SectionTitleHighlight } from '../page';
+
 import { TechStackItem } from '../lib/github';
+import { SectionTitle, SectionTitleHighlight } from '../hooks/ClientHome';
 
 interface TechStackSectionProps {
   techStack: TechStackItem[];

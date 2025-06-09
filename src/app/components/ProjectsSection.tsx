@@ -2,8 +2,9 @@
 import styled from 'styled-components';
 import { useRouter } from 'next/navigation';
 import { useState } from 'react';
-import { SectionTitle, SectionTitleHighlight } from '../page';
+
 import { MenuItem } from '../types';
+import { SectionTitle, SectionTitleHighlight } from '../hooks/ClientHome';
 
 interface ProjectsSectionProps {
   menuItems: MenuItem[];
