@@ -1,6 +1,6 @@
 import { Inter } from 'next/font/google'
 import './globals.css'
-import { ThemeProvider } from './contexts/ThemeContext'
+import ScrollToTop from './components/ScrollToTop'
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -15,9 +15,8 @@ export default function RootLayout({
         className={inter.className}
         suppressHydrationWarning={true}
       >
-        <ThemeProvider>
         {children}
-        </ThemeProvider>
+        <ScrollToTop/>
       </body>
     </html>
   )

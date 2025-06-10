@@ -1,9 +1,7 @@
 'use client';
-import styled, { useTheme } from 'styled-components';
+import styled from 'styled-components';
 import { useRouter } from 'next/navigation';
 import { useClientOnly } from '../hooks/useClientOnly';
-import { useThemeToggle } from '../contexts/ThemeContext';
-import { lightTheme } from '../styles/theme';
 
 interface NavigationHeaderProps {
   scrollPosition: number;
@@ -12,8 +10,6 @@ interface NavigationHeaderProps {
 export default function NavigationHeader({ scrollPosition }: NavigationHeaderProps) {
   const router = useRouter();
   const isClient = useClientOnly();
-  const toggleTheme = useThemeToggle();
-  const theme = useTheme();
 
   const headerStyle = isClient ? {
     opacity: scrollPosition > 300 ? 1 : 0,
@@ -68,9 +64,6 @@ export default function NavigationHeader({ scrollPosition }: NavigationHeaderPro
             </li>
           ))}
         </MenuList>
-        <ThemeToggle onClick={toggleTheme} title="Toggle theme">
-          {theme === lightTheme ? '🌞' : '🌙'}
-        </ThemeToggle>
       </Nav>
     </Header>
   );
@@ -146,23 +139,5 @@ const MenuButton = styled.button`
     &::after {
       width: 100%;
     }
-  }
-`;
-
-const ThemeToggle = styled.button`
-  background: none;
-  border: none;
-  cursor: pointer;
-  font-size: 1.25rem;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 40px;
-  height: 40px;
-  border-radius: 50%;
-  transition: background 0.3s ease;
-  
-  &:hover {
-    background: rgba(0, 0, 0, 0.05);
   }
 `;
