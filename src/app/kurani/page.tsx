@@ -94,8 +94,8 @@ export default function ProjectDetail() {
           pointerEvents: scrollPosition > 100 ? 'all' : 'none'
         }}>
           <HeaderContainer>
-            <Logo>Research Paper</Logo>
-            <BackButton onClick={() => window.history.back()}>← Back to Portfolio</BackButton>
+            <Logo>KUrani</Logo>
+            <BackButton onClick={() => window.history.back()}>← Back to Home</BackButton>
           </HeaderContainer>
         </Header>
 

@@ -93,7 +93,7 @@ export default function ClientHome() {
         onContact={handleContact}
         githubStats={githubStats}
       />
-      <NavigationHeader scrollPosition={scrollPosition} menuItems={menuItems} />
+      <NavigationHeader scrollPosition={scrollPosition} />
       <TechStackSection techStack={githubStats.techStack} />
       <ProjectsSection menuItems={menuItems} />
       <ProfileSection />

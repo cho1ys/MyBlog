@@ -1,17 +1,19 @@
 'use client';
-import styled from 'styled-components';
+import styled, { useTheme } from 'styled-components';
 import { useRouter } from 'next/navigation';
 import { useClientOnly } from '../hooks/useClientOnly';
-import { MenuItem } from '../types';
+import { useThemeToggle } from '../contexts/ThemeContext';
+import { lightTheme } from '../styles/theme';
 
 interface NavigationHeaderProps {
   scrollPosition: number;
-  menuItems: MenuItem[];
 }
 
-export default function NavigationHeader({ scrollPosition, menuItems }: NavigationHeaderProps) {
+export default function NavigationHeader({ scrollPosition }: NavigationHeaderProps) {
   const router = useRouter();
   const isClient = useClientOnly();
+  const toggleTheme = useThemeToggle();
+  const theme = useTheme();
 
   const headerStyle = isClient ? {
     opacity: scrollPosition > 300 ? 1 : 0,
@@ -20,6 +22,32 @@ export default function NavigationHeader({ scrollPosition, menuItems }: Navigati
     opacity: 0,
     pointerEvents: 'none' as const
   };
+  const menuItems = [
+    {
+      id: 1,
+      title: 'OhMovie',
+      path: '/ohmovie',
+     
+    },
+    {
+      id: 2,
+      title: 'AppleNote',
+      path: '/applenote',
+     
+    },
+    {
+      id: 3,
+      title: 'GoodBuyUs',
+      path: '/goodbuyus',
+     
+    },
+    {
+      id: 4,
+      title: 'KUrani',
+      path: '/kurani',
+     
+    },
+  ];
 
   return (
     <Header style={headerStyle}>
@@ -29,7 +57,7 @@ export default function NavigationHeader({ scrollPosition, menuItems }: Navigati
             window.scrollTo({ top: 0, behavior: 'smooth' });
           }
         }}>
-          Portfolio
+          YunSung
         </Logo>
         <MenuList>
           {menuItems.map((item) => (
@@ -40,8 +68,8 @@ export default function NavigationHeader({ scrollPosition, menuItems }: Navigati
             </li>
           ))}
         </MenuList>
-        <ThemeToggle>
-          <span role="img" aria-label="light mode">🌞</span>
+        <ThemeToggle onClick={toggleTheme} title="Toggle theme">
+          {theme === lightTheme ? '🌞' : '🌙'}
         </ThemeToggle>
       </Nav>
     </Header>
