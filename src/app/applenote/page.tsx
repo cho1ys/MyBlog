@@ -102,7 +102,7 @@ export default function ProjectDetail() {
         </Header>
 
         <ProjectHero 
-          backgroundImage={post.thumbnail || undefined}
+          $backgroundImage={post.thumbnail || undefined}
           style={{ 
             backgroundPositionY: `calc(50% + ${scrollPosition * 0.2}px)`
           }}
@@ -381,11 +381,11 @@ const RetryButton = styled.button`
   }
 `;
 
-const ProjectHero = styled.section<{ backgroundImage?: string }>`
+const ProjectHero = styled.section<{ $backgroundImage?: string }>`
   height: 50vh;
   min-height: 400px;
   position: relative;
-  background-image: ${props => props.backgroundImage ? `url(${props.backgroundImage})` : 'linear-gradient(135deg, #818cf8 0%, #4f46e5 100%)'};
+  background-image: ${props => props.$backgroundImage ? `url(${props.$backgroundImage})` : 'linear-gradient(135deg, #818cf8 0%, #4f46e5 100%)'};
   background-size: cover;
   background-position: center;
   display: flex;
