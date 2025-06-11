@@ -24,13 +24,13 @@ export default function SimpleProfileSection() {
     },
     { 
       title: "토익 845점", 
-      desc: "TOEIC 845점 취득 (Listening: 425점, Reading: 420점)",
+      desc: "TOEIC 835점 취득 (Listening: 445점, Reading: 390점)",
       category: "certificate"
     },
     { 
-      title: "Programmers 프론트엔드 부트캠프 이수", 
-      desc: ["Programmers 프론트엔드 부트캠프 이수"],
-      category: "project, education"
+      title: "프로그래머스 프론트엔드 부트캠프 이수", 
+      desc: ["프로그래머스 데브코스: 클라우드 기반 프론트엔드 엔지니어링 과정 이수"],
+      category: "education"
     },
   ];
 
