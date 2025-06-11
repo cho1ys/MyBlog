@@ -10,6 +10,7 @@ export default function Footer() {
             <FooterTitle>YunSung</FooterTitle>
             <FooterText>
               프론트엔드 개발자 최윤성의 포트폴리오입니다.
+              <br/>
               창의적인 웹 경험을 만들어내는 것을 좋아합니다.
             </FooterText>
           </FooterCol>

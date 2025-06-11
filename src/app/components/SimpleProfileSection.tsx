@@ -16,8 +16,8 @@ export default function SimpleProfileSection() {
       category: "education"
     },
     { 
-      title: "LLM 연구 경험", 
-      desc: ["졸업 작품으로 LLM 연구 경험"],
+      title: "LLM 프로젝트 경험", 
+      desc: ["졸업 작품으로 LLM 프로젝트 경험"],
       category: "project",
       clickable: true,
       onClick: () => router.push('/kurani')
