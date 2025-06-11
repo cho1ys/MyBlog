@@ -1,7 +1,6 @@
 'use client';
 
 import React, { useState, useEffect } from 'react';
-import { useRouter } from 'next/navigation';
 import dynamic from 'next/dynamic';
 import styled from 'styled-components';
 import { useGitHubData } from './useGitHubData';
@@ -16,7 +15,6 @@ const ProfileSection = dynamic(() => import('../components/SimpleProfileSection'
 const Footer = dynamic(() => import('../components/Footer'), { ssr: false });
 
 export default function ClientHome() {
-  const router = useRouter();
   const [scrollPosition, setScrollPosition] = useState(0);
   const githubStats = useGitHubData();
   const isClientReady = useClientOnly();
@@ -66,7 +64,14 @@ export default function ClientHome() {
   };
 
   const handleContact = () => {
-    router.push('/contact');
+    if (isClientReady) {
+      const footerElement = document.querySelector('footer') || document.getElementById('footer');
+      if (footerElement) {
+        footerElement.scrollIntoView({ behavior: 'smooth' });
+      } else {
+        window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' });
+      }
+    }
   };
 
   if (!isClientReady) {

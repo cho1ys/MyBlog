@@ -7,7 +7,7 @@ export default function Footer() {
       <FooterInner>
         <FooterGrid>
           <FooterCol>
-            <FooterTitle>Portfolio</FooterTitle>
+            <FooterTitle>YunSung</FooterTitle>
             <FooterText>
               프론트엔드 개발자 최윤성의 포트폴리오입니다.
               창의적인 웹 경험을 만들어내는 것을 좋아합니다.
@@ -16,8 +16,8 @@ export default function Footer() {
           <FooterCol>
             <FooterTitle>Links</FooterTitle>
             <FooterLinks>
-              <FooterLink>GitHub</FooterLink>
-              <FooterLink>Velog</FooterLink>
+              <FooterLink href='https://github.com/cho1ys'>GitHub</FooterLink>
+              <FooterLink href='https://velog.io/@yschoi0119/posts'>Velog</FooterLink>
             </FooterLinks>
           </FooterCol>
           <FooterCol>
