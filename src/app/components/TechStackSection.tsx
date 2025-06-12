@@ -227,6 +227,14 @@ export default function TechStackSection({ techStack }: TechStackSectionProps) {
 const TechSection = styled.section`
   padding: 6rem 1.5rem;
   background: #fff;
+  
+  @media (max-width: 640px) {
+    padding: 4rem 1rem;
+  }
+  
+  @media (min-width: 641px) and (max-width: 1024px) {
+    padding: 5rem 1.5rem;
+  }
 `;
 
 // 정사방형 그리드 스타일
@@ -234,15 +242,21 @@ const TechGrid = styled.div`
   max-width: 70rem;
   margin: 0 auto 4rem;
   display: grid;
-  gap: 1.5rem;
-  grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+  gap: 1rem;
+  grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
   
-  @media (min-width: 768px) {
-    gap: 2rem;
-    grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+  @media (max-width: 640px) {
+    gap: 0.75rem;
+    margin-bottom: 3rem;
   }
   
-  @media (min-width: 1024px) {
+  @media (min-width: 641px) and (max-width: 1024px) {
+    gap: 1.5rem;
+    grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+  }
+  
+  @media (min-width: 1025px) {
+    gap: 2rem;
     grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
   }
 `;
@@ -260,6 +274,11 @@ const TechItem = styled.div`
   justify-content: center;
   gap: 1rem;
   
+  @media (max-width: 640px) {
+    padding: 1rem;
+    gap: 0.75rem;
+  }
+  
   &:hover {
     transform: translateY(-5px);
     box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
@@ -273,12 +292,17 @@ const TechLogoImg = styled.img`
   height: 3rem;
   object-fit: contain;
   
-  @media (min-width: 768px) {
-    width: 3.5rem;
-    height: 3.5rem;
+  @media (max-width: 640px) {
+    width: 2.5rem;
+    height: 2.5rem;
   }
   
-  @media (min-width: 1024px) {
+  @media (min-width: 641px) and (max-width: 1024px) {
+    width: 3rem;
+    height: 3rem;
+  }
+  
+  @media (min-width: 1025px) {
     width: 4rem;
     height: 4rem;
   }
@@ -291,11 +315,15 @@ const TechName = styled.div`
   text-align: center;
   line-height: 1.2;
   
-  @media (min-width: 768px) {
-    font-size: 0.9rem;
+  @media (max-width: 640px) {
+    font-size: 0.75rem;
   }
   
-  @media (min-width: 1024px) {
+  @media (min-width: 641px) and (max-width: 1024px) {
+    font-size: 0.875rem;
+  }
+  
+  @media (min-width: 1025px) {
     font-size: 1rem;
   }
 `;
@@ -306,6 +334,10 @@ const ProgressSection = styled.div`
   margin: 0 auto;
   padding-top: 2rem;
   border-top: 1px solid #e5e7eb;
+  
+  @media (max-width: 640px) {
+    padding-top: 1.5rem;
+  }
 `;
 
 const ProgressTitle = styled.h3`
@@ -314,14 +346,21 @@ const ProgressTitle = styled.h3`
   color: #1f2937;
   text-align: center;
   margin-bottom: 2rem;
+  
+  @media (max-width: 640px) {
+    font-size: 1.25rem;
+    margin-bottom: 1.5rem;
+  }
 `;
 
 const ProgressGrid = styled.div`
   display: grid;
-  gap: 1.5rem;
+  gap: 1rem;
+  grid-template-columns: 1fr;
   
-  @media (min-width: 768px) {
+  @media (min-width: 640px) {
     grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
   }
   
   @media (min-width: 1024px) {
@@ -335,6 +374,10 @@ const ProgressItem = styled.div`
   border-radius: 1rem;
   transition: all 0.3s ease;
   border: 1px solid #e5e7eb;
+  
+  @media (max-width: 640px) {
+    padding: 1rem;
+  }
   
   &:hover {
     transform: translateY(-3px);
@@ -360,12 +403,20 @@ const ProgressName = styled.div`
   font-weight: 600;
   color: #1f2937;
   font-size: 0.95rem;
+  
+  @media (max-width: 640px) {
+    font-size: 0.85rem;
+  }
 `;
 
 const ProgressPercent = styled.div`
   font-weight: 600;
   color: #4f46e5;
   font-size: 0.9rem;
+  
+  @media (max-width: 640px) {
+    font-size: 0.8rem;
+  }
 `;
 
 const ProgressBar = styled.div`

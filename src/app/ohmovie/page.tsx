@@ -237,7 +237,7 @@ export default function ProjectDetail() {
         <Footer>
           <FooterInner>
             <FooterText>
-              © {new Date().getFullYear()} <FooterStrong>My Portfolio</FooterStrong>. All rights reserved.
+              © {new Date().getFullYear()} <FooterStrong>YunSung</FooterStrong>. All rights reserved.
             </FooterText>
             <BackToTop onClick={() => isMounted && window.scrollTo({ top: 0, behavior: 'smooth' })}>
               Back to Top ↑

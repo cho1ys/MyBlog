@@ -230,7 +230,7 @@ export default function ProjectDetail() {
         <Footer>
           <FooterInner>
             <FooterText>
-              © 2024 <FooterStrong>My Portfolio</FooterStrong>. All rights reserved.
+              © 2024 <FooterStrong>YunSung</FooterStrong>. All rights reserved.
             </FooterText>
             <BackToTop onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}>
               Back to Top ↑

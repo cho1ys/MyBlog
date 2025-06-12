@@ -106,6 +106,11 @@ const Button = styled.button`
   cursor: pointer;
   transition: all 0.3s ease;
   outline: none;
+  
+  @media (max-width: 640px) {
+    padding: 0.6rem 1.5rem;
+    font-size: 0.9rem;
+  }
 `;
 const Hero = styled.section`
   height: 100vh;
@@ -131,7 +136,15 @@ const HeroTitle = styled.h1`
   line-height: 1.2;
   transition: transform 0.5s ease-out;
   
+  @media (max-width: 640px) {
+    font-size: 2.5rem;
+  }
+  
   @media (min-width: 768px) {
+    font-size: 4rem;
+  }
+  
+  @media (min-width: 1024px) {
     font-size: 5rem;
   }
 `;
@@ -158,6 +171,11 @@ const HeroSubtitle = styled.p`
   color: rgba(255, 255, 255, 0.9);
   margin-bottom: 2.5rem;
   transition: transform 0.5s ease-out;
+  
+  @media (max-width: 640px) {
+    font-size: 1.2rem;
+    margin-bottom: 2rem;
+  }
 `;
 
 const HeroButtons = styled.div`
@@ -165,15 +183,28 @@ const HeroButtons = styled.div`
   gap: 1rem;
   justify-content: center;
   margin-top: 2rem;
+  
+  @media (max-width: 640px) {
+    flex-direction: column;
+    gap: 0.75rem;
+    margin-top: 1.5rem;
+  }
 `;
 const StatsContainer = styled.div`
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  gap: 2rem;
-  margin: 3rem 0;
+  gap: 1rem;
+  margin: 2rem 0;
+  
+  @media (max-width: 640px) {
+    gap: 0.75rem;
+    margin: 1.5rem 0;
+  }
   
   @media (min-width: 768px) {
     grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+    margin: 3rem 0;
   }
 `;
 
@@ -185,6 +216,10 @@ const StatItem = styled.div`
   backdrop-filter: blur(10px);
   transition: transform 0.3s ease;
   
+  @media (max-width: 640px) {
+    padding: 0.75rem;
+  }
+  
   &:hover {
     transform: translateY(-5px);
   }
@@ -193,6 +228,11 @@ const StatItem = styled.div`
 const StatIcon = styled.div`
   font-size: 2rem;
   margin-bottom: 0.5rem;
+  
+  @media (max-width: 640px) {
+    font-size: 1.5rem;
+    margin-bottom: 0.25rem;
+  }
 `;
 
 const StatValue = styled.div`
@@ -200,12 +240,20 @@ const StatValue = styled.div`
   font-weight: 800;
   color: #fff;
   margin-bottom: 0.25rem;
+  
+  @media (max-width: 640px) {
+    font-size: 1.5rem;
+  }
 `;
 
 const StatLabel = styled.div`
   font-size: 0.875rem;
   color: rgba(255, 255, 255, 0.8);
   font-weight: 500;
+  
+  @media (max-width: 640px) {
+    font-size: 0.75rem;
+  }
 `;
 const PrimaryButton = styled(Button)`
   background: #fff;

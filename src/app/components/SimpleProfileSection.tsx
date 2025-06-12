@@ -23,7 +23,7 @@ export default function SimpleProfileSection() {
       onClick: () => router.push('/kurani')
     },
     { 
-      title: "토익 845점", 
+      title: "토익 835점", 
       desc: "TOEIC 835점 취득 (Listening: 445점, Reading: 390점)",
       category: "certificate"
     },
@@ -39,7 +39,6 @@ export default function SimpleProfileSection() {
       case 'education': return '#10b981';
       case 'certificate': return '#f59e0b';
       case 'project': return '#8b5cf6';
-      case 'career': return '#ef4444';
       default: return '#4f46e5';
     }
   };

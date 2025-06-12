@@ -2,6 +2,7 @@
 import styled from 'styled-components';
 import { useRouter } from 'next/navigation';
 import { useClientOnly } from '../hooks/useClientOnly';
+import { useState } from 'react';
 
 interface NavigationHeaderProps {
   scrollPosition: number;
@@ -10,6 +11,7 @@ interface NavigationHeaderProps {
 export default function NavigationHeader({ scrollPosition }: NavigationHeaderProps) {
   const router = useRouter();
   const isClient = useClientOnly();
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   const headerStyle = isClient ? {
     opacity: scrollPosition > 300 ? 1 : 0,
@@ -18,32 +20,38 @@ export default function NavigationHeader({ scrollPosition }: NavigationHeaderPro
     opacity: 0,
     pointerEvents: 'none' as const
   };
+
   const menuItems = [
     {
       id: 1,
       title: 'OhMovie',
       path: '/ohmovie',
-     
     },
     {
       id: 2,
       title: 'AppleNote',
       path: '/applenote',
-     
     },
     {
       id: 3,
       title: 'GoodBuyUs',
       path: '/goodbuyus',
-     
     },
     {
       id: 4,
       title: 'KUrani',
       path: '/kurani',
-     
     },
   ];
+
+  const handleMenuClick = () => {
+    setIsMenuOpen(!isMenuOpen);
+  };
+
+  const handleMenuItemClick = (path: string) => {
+    setIsMenuOpen(false);
+    router.push(path);
+  };
 
   return (
     <Header style={headerStyle}>
@@ -55,20 +63,24 @@ export default function NavigationHeader({ scrollPosition }: NavigationHeaderPro
         }}>
           YunSung
         </Logo>
-        <MenuList>
+        <MenuList className={isMenuOpen ? 'open' : ''}>
           {menuItems.map((item) => (
-            <li key={item.id}>
-              <MenuButton onClick={() => router.push(item.path)}>
+            <MenuItem key={item.id}>
+              <MenuButton onClick={() => handleMenuItemClick(item.path)}>
                 {item.title}
               </MenuButton>
-            </li>
+            </MenuItem>
           ))}
         </MenuList>
+        <HamburgerButton onClick={handleMenuClick} className={isMenuOpen ? 'open' : ''}>
+          <span></span>
+          <span></span>
+          <span></span>
+        </HamburgerButton>
       </Nav>
     </Header>
   );
 }
-
 
 const Header = styled.header`
   position: fixed;
@@ -89,6 +101,10 @@ const Nav = styled.nav`
   display: flex;
   justify-content: space-between;
   align-items: center;
+  
+  @media (max-width: 640px) {
+    padding: 0.75rem 1rem;
+  }
 `;
 
 const Logo = styled.div`
@@ -96,6 +112,10 @@ const Logo = styled.div`
   font-size: 1.5rem;
   color: #4f46e5;
   cursor: pointer;
+  
+  @media (max-width: 640px) {
+    font-size: 1.25rem;
+  }
 `;
 
 const MenuList = styled.ul`
@@ -107,7 +127,35 @@ const MenuList = styled.ul`
   padding: 0;
   
   @media (max-width: 768px) {
-    display: none;
+    position: fixed;
+    top: 3rem;
+    right: 0;
+    bottom: 0;
+    width: 70%;
+    max-width: 300px;
+    background: #bfbde3;
+    flex-direction: column;
+    padding: 8rem 2rem;
+    height: 2rem;
+    gap: 1rem;
+    transform: translateX(100%);
+    transition: transform 0.3s ease-in-out;
+    box-shadow: -5px 0 15px rgba(0, 0, 0, 0.1);
+    
+    &.open {
+      transform: translateX(0);
+    }
+  }
+  
+  @media (min-width: 769px) and (max-width: 1024px) {
+    gap: 1rem;
+  }
+`;
+
+const MenuItem = styled.li`
+  @media (max-width: 768px) {
+    width: 100%;
+    border-bottom: 1px solid #e5e7eb;  
   }
 `;
 
@@ -121,6 +169,17 @@ const MenuButton = styled.button`
   cursor: pointer;
   position: relative;
   padding: 0.5rem 0;
+  width: 100%;
+  text-align: left;
+  
+  @media (min-width: 769px) {
+    width: auto;
+    text-align: center;
+  }
+  
+  @media (min-width: 769px) and (max-width: 1024px) {
+    font-size: 0.9rem;
+  }
   
   &::after {
     content: '';
@@ -138,6 +197,47 @@ const MenuButton = styled.button`
     
     &::after {
       width: 100%;
+    }
+  }
+`;
+
+const HamburgerButton = styled.button`
+  display: none;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 30px;
+  height: 21px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  z-index: 101;
+  
+  @media (max-width: 768px) {
+    display: flex;
+  }
+  
+  span {
+    width: 100%;
+    height: 3px;
+    background-color: #4f46e5;
+    border-radius: 3px;
+    transition: all 0.3s ease-in-out;
+  }
+  
+  &.open {
+    span {
+      &:first-child {
+        transform: translateY(9px) rotate(45deg);
+      }
+      
+      &:nth-child(2) {
+        opacity: 0;
+      }
+      
+      &:last-child {
+        transform: translateY(-9px) rotate(-45deg);
+      }
     }
   }
 `;

@@ -49,19 +49,29 @@ const Main = styled.main`
   padding: 8rem 1.5rem;
   max-width: 80rem;
   margin: 0 auto;
+  
+  @media (max-width: 640px) {
+    padding: 4rem 1rem;
+  }
+  
+  @media (min-width: 641px) and (max-width: 1024px) {
+    padding: 6rem 1.5rem;
+  }
 `;
 
 const Grid = styled.div`
   display: grid;
   grid-template-columns: 1fr;
-  gap: 2rem;
+  gap: 1.5rem;
   
-  @media (min-width: 768px) {
+  @media (min-width: 640px) {
     grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
   }
   
   @media (min-width: 1024px) {
     grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
   }
 `;
 
@@ -78,6 +88,10 @@ const Card = styled.div`
   height: 100%;
   position: relative;
   overflow: hidden;
+  
+  @media (max-width: 640px) {
+    padding: 1.5rem;
+  }
   
   &::before {
     content: '';
@@ -107,6 +121,13 @@ const CardIcon = styled.div`
   font-size: 1.5rem;
   margin-bottom: 1.5rem;
   color: white;
+  
+  @media (max-width: 640px) {
+    width: 40px;
+    height: 40px;
+    font-size: 1.25rem;
+    margin-bottom: 1rem;
+  }
 `;
 
 const CardTitle = styled.h3`
@@ -115,6 +136,11 @@ const CardTitle = styled.h3`
   color: #1f2937;
   margin-bottom: 0.75rem;
   transition: color 0.2s;
+  
+  @media (max-width: 640px) {
+    font-size: 1.25rem;
+    margin-bottom: 0.5rem;
+  }
 `;
 
 const CardDesc = styled.p`
@@ -122,6 +148,11 @@ const CardDesc = styled.p`
   flex-grow: 1;
   font-size: 1rem;
   line-height: 1.6;
+  
+  @media (max-width: 640px) {
+    font-size: 0.9rem;
+    line-height: 1.5;
+  }
 `;
 
 const CardLink = styled.div`
@@ -131,6 +162,11 @@ const CardLink = styled.div`
   font-size: 0.875rem;
   margin-top: 1.5rem;
   transition: gap 0.3s ease;
+  
+  @media (max-width: 640px) {
+    font-size: 0.8rem;
+    margin-top: 1rem;
+  }
 `;
 
 const ArrowIcon = styled.span`

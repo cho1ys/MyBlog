@@ -174,7 +174,7 @@ export default function ProjectDetail() {
         <NavigationFooter>
           <FooterInner>
             <FooterText>
-              © 2024 <FooterStrong>Yeonsu Choi</FooterStrong> - Research Portfolio
+              © 2024 <FooterStrong>YunSung</FooterStrong>. All rights reserved.
             </FooterText>
             <BackToTop onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}>
               Back to Top ↑

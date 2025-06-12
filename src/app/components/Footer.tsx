@@ -47,6 +47,10 @@ const FooterInner = styled.div`
   max-width: 80rem;
   margin: 0 auto;
   padding: 4rem 1.5rem 2rem;
+  
+  @media (max-width: 640px) {
+    padding: 3rem 1rem 1.5rem;
+  }
 `;
 
 const FooterGrid = styled.div`
@@ -54,7 +58,11 @@ const FooterGrid = styled.div`
   grid-template-columns: 1fr;
   gap: 2rem;
   
-  @media (min-width: 768px) {
+  @media (min-width: 640px) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  
+  @media (min-width: 1024px) {
     grid-template-columns: repeat(3, 1fr);
   }
 `;
@@ -66,11 +74,20 @@ const FooterTitle = styled.h3`
   font-weight: 700;
   margin-bottom: 1.5rem;
   color: #f9fafb;
+  
+  @media (max-width: 640px) {
+    font-size: 1.1rem;
+    margin-bottom: 1rem;
+  }
 `;
 
 const FooterText = styled.p`
   color: #9ca3af;
   line-height: 1.6;
+  
+  @media (max-width: 640px) {
+    font-size: 0.9rem;
+  }
 `;
 
 const FooterLinks = styled.div`
