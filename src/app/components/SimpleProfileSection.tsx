@@ -13,24 +13,28 @@ export default function SimpleProfileSection() {
       title: "대학교 졸업", 
       desc: ["고려대학교 세종캠퍼스 컴퓨터융합소프트웨어학과 졸업",
         " (학점: 2.89 / 4.5)"],
-      category: "education"
+      category: "education",
+      period: "2018.03 - 2024.07"
     },
     { 
       title: "LLM 프로젝트 경험", 
       desc: ["졸업 작품으로 LLM 프로젝트 경험"],
       category: "project",
       clickable: true,
-      onClick: () => router.push('/kurani')
+      onClick: () => router.push('/kurani'),
+      period: "2024.10 - 2024.12"
     },
     { 
       title: "토익 835점", 
       desc: "TOEIC 835점 취득 (Listening: 445점, Reading: 390점)",
-      category: "certificate"
+      category: "certificate",
+      period: "2024.08"
     },
     { 
-      title: "프로그래머스 프론트엔드 부트캠프 이수", 
-      desc: ["프로그래머스 데브코스: 클라우드 기반 프론트엔드 엔지니어링 과정 이수"],
-      category: "education"
+      title: "프로그래머스 데브코스 부트캠프 이수", 
+      desc: ["클라우드 기반 프론트엔드 엔지니어링 과정 이수"],
+      category: "education",
+      period: "2024.07 - 2024.12"
     },
   ];
 
@@ -63,6 +67,7 @@ export default function SimpleProfileSection() {
               clickable={item.clickable}
               onClick={item.onClick}
             >
+              {item.period && <PeriodText>{item.period}</PeriodText>}
               <ProfileTitle>
                 {item.title}
                 {item.clickable && <LinkIcon>🔗</LinkIcon>}
@@ -171,7 +176,7 @@ const ProfileTitle = styled.h3.withConfig({
   font-size: 1.25rem;
   font-weight: 700;
   color: #1f2937;
-  margin-top: 0.75rem;
+  margin-top: 1.5rem;
   line-height: 1.4;
   display: flex;
   align-items: center;
@@ -232,4 +237,16 @@ const CategoryTag = styled.span.withConfig({
   font-weight: 600;
   background: #f3f4f6;
   color: #6b7280;
+`;
+
+const PeriodText = styled.div.withConfig({
+  shouldForwardProp: (prop) => !['backgroundImage'].includes(prop),
+})`
+  color: #6b7280;
+  font-size: 0.85rem;
+  margin-bottom: 0.75rem;
+  font-weight: 500;
+  position: absolute;
+  top: 1rem;
+  left: 1rem;
 `;

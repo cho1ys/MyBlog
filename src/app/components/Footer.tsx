@@ -24,7 +24,7 @@ export default function Footer() {
           <FooterCol>
             <FooterTitle>Contact</FooterTitle>
             <FooterContact>
-              <FooterContactItem>yschoi0119@naver.com</FooterContactItem>
+              <FooterContactItem>yunsung0119@gmail.com</FooterContactItem>
               <FooterContactItem>010-4935-8654</FooterContactItem>
               <FooterContactItem>Seoul, South Korea</FooterContactItem>
             </FooterContact>
