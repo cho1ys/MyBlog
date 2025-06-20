@@ -66,7 +66,7 @@ export default function HeroSection({
             transform: isClient ? `translateY(${scrollPosition * 0.3}px)` : 'translateY(0px)' 
           }}
         >
-          사용자 경험을 중요시하는 웹 개발자
+          협업과 소통을 중시하는 개발자
         </HeroSubtitle>
         <StatsContainer>
           {dynamicStats.map((stat, index) => (

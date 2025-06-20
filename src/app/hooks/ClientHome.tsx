@@ -99,7 +99,7 @@ export default function ClientHome() {
         githubStats={githubStats}
       />
       <NavigationHeader scrollPosition={scrollPosition} />
-      <TechStackSection techStack={githubStats.techStack} />
+      <TechStackSection />
       <ProjectsSection menuItems={menuItems} />
       <ProfileSection />
       <Footer />

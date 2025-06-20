@@ -11,8 +11,7 @@ export default function SimpleProfileSection() {
   const profileData = [
     { 
       title: "대학교 졸업", 
-      desc: ["고려대학교 세종캠퍼스 컴퓨터융합소프트웨어학과 졸업",
-        " (학점: 2.89 / 4.5)"],
+      desc: ["고려대학교 세종캠퍼스 컴퓨터융합소프트웨어학과 졸업"],
       category: "education",
       period: "2018.03 - 2024.07"
     },
