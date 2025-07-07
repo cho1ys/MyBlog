@@ -11,27 +11,21 @@ interface VelogPost {
   body: string;
   thumbnail: string | null;
   url: string;
-  createdAt: string;
 }
 
-export default function ProjectDetail() {
+export default function NextjsLoadingOptimizeExperience() {
   const [post, setPost] = useState<VelogPost | null>(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
   const [scrollPosition, setScrollPosition] = useState<number>(0);
-  const postUrl = 'https://velog.io/@yschoi0119/%EB%8D%B0%EB%B8%8C%EC%BD%94%EC%8A%A4-%EC%B5%9C%EC%A2%85-%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8-GoodBuyUs';
-  const sourceUrl = 'https://github.com/cho1ys/GoodBuyUs'
+  const postUrl = 'https://velog.io/@yschoi0119/Next.js-%EB%A1%9C%EB%94%A9-%EC%86%8D%EB%8F%84-%EA%B0%9C%EC%84%A0';
 
   useEffect(() => {
     const handleScroll = () => {
-      const position = window.scrollY;
-      setScrollPosition(position);
+      setScrollPosition(window.scrollY);
     };
-    
     window.addEventListener('scroll', handleScroll);
-    return () => {
-      window.removeEventListener('scroll', handleScroll);
-    };
+    return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
   useEffect(() => {
@@ -45,14 +39,12 @@ export default function ProjectDetail() {
           },
           body: JSON.stringify({
             username: 'yschoi0119',
-            url_slug: '데브코스-최종-프로젝트-GoodBuyUs',
+            url_slug: 'Next.js-로딩-속도-개선',
           }),
         });
-
         if (!response.ok) {
           throw new Error('Failed to fetch post');
         }
-
         const data = await response.json();
         setPost(data.data.post);
       } catch (err) {
@@ -61,7 +53,6 @@ export default function ProjectDetail() {
         setLoading(false);
       }
     };
-
     fetchPost();
   }, []);
 
@@ -70,12 +61,11 @@ export default function ProjectDetail() {
       <LoadingContainer>
         <SpinnerContainer>
           <Spinner />
-          <LoadingText>Loading project details...</LoadingText>
+          <LoadingText>Loading Experience...</LoadingText>
         </SpinnerContainer>
       </LoadingContainer>
     );
   }
-
   if (error) {
     return (
       <ErrorContainer>
@@ -88,160 +78,98 @@ export default function ProjectDetail() {
       </ErrorContainer>
     );
   }
-
-  if (post) {
-    return (
-      <Wrapper>
-        <Header style={{ 
-          opacity: scrollPosition > 100 ? 1 : 0,
-          pointerEvents: scrollPosition > 100 ? 'all' : 'none'
-        }}>
-          <HeaderContainer>
-            <Logo>GoodBuyUs</Logo>
-            <BackButton onClick={() => window.history.back()}>← Back to Home</BackButton>
-          </HeaderContainer>
-        </Header>
-
-        <ProjectHero 
-          $backgroundImage={post.thumbnail || undefined}
-          style={{ 
-            backgroundPositionY: `calc(50% + ${scrollPosition * 0.2}px)`
-          }}
-        >
-          <ProjectHeroOverlay />
-          <ProjectHeroContent>
-            <ProjectCategory>Project Showcase</ProjectCategory>
-            <ProjectTitle>{post.title}</ProjectTitle>
-            <ProjectMeta>
-              <ProjectDate>
-                <DateIcon>📅</DateIcon>
-                24. 11 ~ 25. 01 (~25.04 연장)
-              </ProjectDate>
-              <ProjectSourceLink 
-                href={postUrl} 
-                target="_blank" 
-                rel="noopener noreferrer"
-              >
-                View Original Post
-                <LinkIcon>↗</LinkIcon>
-              </ProjectSourceLink>
-            </ProjectMeta>
-          </ProjectHeroContent>
-        </ProjectHero>
-
-        <ContentContainer>
-          <ContentWrapper>
-            <MarkdownContainer>
-              <ReactMarkdown 
-                remarkPlugins={[remarkGfm]}
-                components={{
-                  img: ({ ...props }) => (
-                    <ContentImage {...props} />
-                  ),
-                  h1: ({ ...props }) => (
-                    <ContentHeading1 {...props} />
-                  ),
-                  h2: ({ ...props }) => (
-                    <ContentHeading2 {...props} />
-                  ),
-                  h3: ({ ...props }) => (
-                    <ContentHeading3 {...props} />
-                  ),
-                  p: ({ ...props }) => (
-                    <ContentParagraph {...props} />
-                  ),
-                  a: ({ ...props }) => (
-                    <ContentLink {...props} target="_blank" rel="noopener noreferrer" />
-                  ),
-                  code: ({ ...props }) => (
-                    <ContentCode {...props} />
-                  ),
-                  pre: ({ ...props }) => (
-                    <ContentPre {...props} />
-                  ),
-                  ul: ({ ...props }) => (
-                    <ContentList {...props} />
-                  ),
-                  ol: ({ ...props }) => (
-                    <ContentOrderedList {...props} />
-                  ),
-                  li: ({ ...props }) => (
-                    <ContentListItem {...props} />
-                  ),
-                  blockquote: ({ ...props }) => (
-                    <ContentBlockquote {...props} />
-                  ),
-                }}
-              >
-                {post.body}
-              </ReactMarkdown>
-            </MarkdownContainer>
-          </ContentWrapper>
-          
-          <Sidebar>
-            <SidebarCard>
-              <SidebarCardTitle>Project Info</SidebarCardTitle>
-              <SidebarItem>
-                <SidebarItemLabel>Date</SidebarItemLabel>
-                <SidebarItemValue>24.11 ~ 25.01 (~25.04 연장)</SidebarItemValue>
-              </SidebarItem>
-              <SidebarItem>
-                <SidebarItemLabel>Category</SidebarItemLabel>
-                <SidebarItemValue>Social Platform</SidebarItemValue>
-              </SidebarItem>
-              <SidebarItem>
-                <SidebarItemLabel>Tech Stack</SidebarItemLabel>
-                <TechStack>
-                  <TechBadge>React</TechBadge>
-                  <TechBadge>Next.js</TechBadge>
-                  <TechBadge>TypeScript</TechBadge>
-                  <TechBadge>Node.js</TechBadge>
-                </TechStack>
-              </SidebarItem>
-              <SidebarButton 
-                href={sourceUrl} 
-                target="_blank" 
-                rel="noopener noreferrer"
-              >
-                View Source
-              </SidebarButton>
-            </SidebarCard>
-
-            <SidebarCard>
-              <SidebarCardTitle>More Projects</SidebarCardTitle>
-              <RelatedProjectsList>
-                <RelatedProject>
-                  <RelatedProjectLink href="/applenote">
-                    <RelatedProjectTitle>AppleNote</RelatedProjectTitle>
-                    <RelatedProjectDesc>애플 스타일의 메모 웹앱</RelatedProjectDesc>
-                  </RelatedProjectLink>
-                </RelatedProject>
-                <RelatedProject>
-                  <RelatedProjectLink href="/ohmovie">
-                    <RelatedProjectTitle>OhMovie</RelatedProjectTitle>
-                    <RelatedProjectDesc>영화 정보 검색 및 추천 서비스</RelatedProjectDesc>
-                  </RelatedProjectLink>
-                </RelatedProject>
-              </RelatedProjectsList>
-            </SidebarCard>
-          </Sidebar>
-        </ContentContainer>
-
-        <Footer>
-          <FooterInner>
-            <FooterText>
-              © 2024 <FooterStrong>YunSung</FooterStrong>. All rights reserved.
-            </FooterText>
-            <BackToTop onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}>
-              Back to Top ↑
-            </BackToTop>
-          </FooterInner>
-        </Footer>
-      </Wrapper>
-    );
+  if (!post) {
+    return <div>포스트를 찾을 수 없습니다.</div>;
   }
 
-  return null;
+  return (
+    <Wrapper>
+      <Header style={{
+        opacity: scrollPosition > 100 ? 1 : 0,
+        pointerEvents: scrollPosition > 100 ? 'all' : 'none',
+      }}>
+        <HeaderContainer>
+          <Logo>Next.js Loading</Logo>
+          <BackButton onClick={() => window.history.back()}>← Back to Home</BackButton>
+        </HeaderContainer>
+      </Header>
+
+      <HeroSection>
+        <HeroOverlay />
+        <HeroContent>
+          <Category>Performance Note</Category>
+          <HeroTitle>{post.title}</HeroTitle>
+          <HeroMeta>
+            <HeroDate>
+              <DateIcon>⚡</DateIcon>
+              25. 07
+            </HeroDate>
+            <HeroSourceLink href={postUrl} target="_blank" rel="noopener noreferrer">
+              View Original Post
+              <LinkIcon>↗</LinkIcon>
+            </HeroSourceLink>
+          </HeroMeta>
+        </HeroContent>
+      </HeroSection>
+
+      <ContentContainer>
+        <ContentWrapper>
+          <MarkdownContainer>
+            <ReactMarkdown 
+              remarkPlugins={[remarkGfm]}
+              components={{
+                img: ({ ...props }) => <ContentImage {...props} />, 
+                h1: ({ ...props }) => <ContentHeading1 {...props} />, 
+                h2: ({ ...props }) => <ContentHeading2 {...props} />, 
+                h3: ({ ...props }) => <ContentHeading3 {...props} />, 
+                p: ({ ...props }) => <ContentParagraph {...props} />, 
+                a: ({ ...props }) => <ContentLink {...props} target="_blank" rel="noopener noreferrer" />, 
+                code: ({ ...props }) => <ContentCode {...props} />, 
+                pre: ({ ...props }) => <ContentPre {...props} />, 
+                ul: ({ ...props }) => <ContentList {...props} />, 
+                ol: ({ ...props }) => <ContentOrderedList {...props} />, 
+                li: ({ ...props }) => <ContentListItem {...props} />, 
+                blockquote: ({ ...props }) => <ContentBlockquote {...props} />,
+              }}
+            >
+              {post.body}
+            </ReactMarkdown>
+          </MarkdownContainer>
+        </ContentWrapper>
+        <Sidebar>
+          <SidebarCard>
+            <SidebarCardTitle>Info</SidebarCardTitle>
+            <SidebarItem>
+              <SidebarItemLabel>Category</SidebarItemLabel>
+              <SidebarItemValue>Performance</SidebarItemValue>
+            </SidebarItem>
+            <SidebarItem>
+              <SidebarItemLabel>Tags</SidebarItemLabel>
+              <TechStack>
+                <TechBadge>Next.js</TechBadge>
+                <TechBadge>최적화</TechBadge>
+                <TechBadge>로딩속도</TechBadge>
+              </TechStack>
+            </SidebarItem>
+            <SidebarButton href={postUrl} target="_blank" rel="noopener noreferrer">
+            View Original Post
+            </SidebarButton>
+          </SidebarCard>
+        </Sidebar>
+      </ContentContainer>
+
+      <Footer>
+        <FooterInner>
+          <FooterText>
+            © {new Date().getFullYear()} <FooterStrong>YunSung</FooterStrong>. All rights reserved.
+          </FooterText>
+          <BackToTop onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}>
+            Back to Top ↑
+          </BackToTop>
+        </FooterInner>
+      </Footer>
+    </Wrapper>
+  );
 }
 
 const spin = keyframes`
@@ -254,7 +182,7 @@ const fadeIn = keyframes`
 `;
 
 const Wrapper = styled.div`
-  background-color: #f9fafb;
+  background-color: #f6fefb;
   min-height: 100vh;
 `;
 
@@ -282,7 +210,7 @@ const HeaderContainer = styled.div`
 const Logo = styled.div`
   font-weight: 800;
   font-size: 1.5rem;
-  color: #10b981;
+  color: #2563eb;
   cursor: pointer;
 `;
 
@@ -295,9 +223,8 @@ const BackButton = styled.button`
   cursor: pointer;
   display: flex;
   align-items: center;
-  
   &:hover {
-    color: #10b981;
+    color: #2563eb;
   }
 `;
 
@@ -306,7 +233,7 @@ const LoadingContainer = styled.div`
   align-items: center;
   justify-content: center;
   min-height: 100vh;
-  background: linear-gradient(135deg, #f3f4f6 0%, #f9fafb 50%, #fff 100%);
+  background: linear-gradient(135deg, #e0e7ff 0%, #f6fefb 50%, #fff 100%);
 `;
 
 const SpinnerContainer = styled.div`
@@ -321,8 +248,8 @@ const Spinner = styled.div`
   border-radius: 9999px;
   height: 3rem;
   width: 3rem;
-  border-top: 3px solid #10b981;
-  border-bottom: 3px solid #10b981;
+  border-top: 3px solid #2563eb;
+  border-bottom: 3px solid #2563eb;
   border-left: 3px solid transparent;
   border-right: 3px solid transparent;
 `;
@@ -337,7 +264,7 @@ const ErrorContainer = styled.div`
   align-items: center;
   justify-content: center;
   min-height: 100vh;
-  background: linear-gradient(135deg, #f3f4f6 0%, #f9fafb 50%, #fff 100%);
+  background: linear-gradient(135deg, #e0e7ff 0%, #f6fefb 50%, #fff 100%);
 `;
 
 const ErrorBox = styled.div`
@@ -368,7 +295,7 @@ const ErrorMessage = styled.p`
 `;
 
 const RetryButton = styled.button`
-  background-color: #10b981;
+  background-color: #2563eb;
   color: white;
   font-weight: 600;
   padding: 0.75rem 2rem;
@@ -376,17 +303,16 @@ const RetryButton = styled.button`
   border: none;
   cursor: pointer;
   transition: background-color 0.2s;
-  
   &:hover {
-    background-color: #059669;
+    background-color: #1d4ed8;
   }
 `;
 
-const ProjectHero = styled.section<{ $backgroundImage?: string }>`
+const HeroSection = styled.section`
   height: 50vh;
   min-height: 400px;
   position: relative;
-  background-image: ${props => props.$backgroundImage ? `url(${props.$backgroundImage})` : 'linear-gradient(135deg, #34d399 0%, #10b981 100%)'};
+  background: linear-gradient(135deg, #dbeafe 0%, #2563eb 100%);
   background-size: cover;
   background-position: center;
   display: flex;
@@ -394,13 +320,13 @@ const ProjectHero = styled.section<{ $backgroundImage?: string }>`
   transition: background-position 0.1s linear;
 `;
 
-const ProjectHeroOverlay = styled.div`
+const HeroOverlay = styled.div`
   position: absolute;
   inset: 0;
-  background: linear-gradient(to top, rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.4));
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.2));
 `;
 
-const ProjectHeroContent = styled.div`
+const HeroContent = styled.div`
   position: relative;
   z-index: 10;
   max-width: 80rem;
@@ -411,9 +337,10 @@ const ProjectHeroContent = styled.div`
   animation: ${fadeIn} 0.5s ease-out;
 `;
 
-const ProjectCategory = styled.div`
+const Category = styled.div`
   text-transform: uppercase;
-  background: rgba(16, 185, 129, 0.8);
+  background: #dbeafe;
+  color: #2563eb;
   display: inline-block;
   padding: 0.5rem 1rem;
   border-radius: 2rem;
@@ -423,26 +350,25 @@ const ProjectCategory = styled.div`
   backdrop-filter: blur(4px);
 `;
 
-const ProjectTitle = styled.h1`
+const HeroTitle = styled.h1`
   font-size: 3rem;
   font-weight: 800;
   margin-bottom: 1.5rem;
   line-height: 1.2;
   text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
-  
   @media (max-width: 768px) {
     font-size: 2rem;
   }
 `;
 
-const ProjectMeta = styled.div`
+const HeroMeta = styled.div`
   display: flex;
   flex-wrap: wrap;
   gap: 2rem;
   align-items: center;
 `;
 
-const ProjectDate = styled.div`
+const HeroDate = styled.div`
   display: flex;
   align-items: center;
   gap: 0.5rem;
@@ -454,7 +380,7 @@ const DateIcon = styled.span`
   font-size: 1rem;
 `;
 
-const ProjectSourceLink = styled.a`
+const HeroSourceLink = styled.a`
   display: flex;
   align-items: center;
   gap: 0.5rem;
@@ -462,7 +388,6 @@ const ProjectSourceLink = styled.a`
   font-size: 0.875rem;
   text-decoration: none;
   transition: color 0.2s;
-  
   &:hover {
     color: white;
     text-decoration: underline;
@@ -471,8 +396,7 @@ const ProjectSourceLink = styled.a`
 
 const LinkIcon = styled.span`
   transition: transform 0.2s;
-  
-  ${ProjectSourceLink}:hover & {
+  ${HeroSourceLink}:hover & {
     transform: translateX(2px) translateY(-2px);
   }
 `;
@@ -484,7 +408,6 @@ const ContentContainer = styled.main`
   display: grid;
   grid-template-columns: 1fr;
   gap: 2rem;
-  
   @media (min-width: 1024px) {
     grid-template-columns: 2fr 1fr;
   }
@@ -499,7 +422,6 @@ const ContentWrapper = styled.div`
 
 const MarkdownContainer = styled.div`
   padding: 2rem;
-  
   @media (min-width: 768px) {
     padding: 3rem;
   }
@@ -512,7 +434,6 @@ const ContentImage = styled.img`
   margin: 2rem 0;
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
   transition: transform 0.3s ease;
-  
   &:hover {
     transform: scale(1.02);
   }
@@ -521,57 +442,56 @@ const ContentImage = styled.img`
 const ContentHeading1 = styled.h1`
   font-size: 2.5rem;
   font-weight: 800;
-  color: #1f2937;
+  color: #2563eb;
   margin: 2rem 0 1.5rem;
-  border-bottom: 2px solid #f3f4f6;
+  border-bottom: 2px solid #dbeafe;
   padding-bottom: 0.75rem;
 `;
 
 const ContentHeading2 = styled.h2`
   font-size: 2rem;
   font-weight: 700;
-  color: #1f2937;
+  color: #2563eb;
   margin: 2rem 0 1rem;
 `;
 
 const ContentHeading3 = styled.h3`
   font-size: 1.5rem;
   font-weight: 600;
-  color: #1f2937;
+  color: #2563eb;
   margin: 1.5rem 0 1rem;
 `;
 
 const ContentParagraph = styled.p`
-  color: #4b5563;
+  color: #334155;
   line-height: 1.8;
   margin-bottom: 1.5rem;
   font-size: 1.05rem;
 `;
 
 const ContentLink = styled.a`
-  color: #10b981;
+  color: #2563eb;
   text-decoration: none;
   font-weight: 500;
   transition: color 0.2s;
-  
   &:hover {
-    color: #059669;
+    color: #1d4ed8;
     text-decoration: underline;
   }
 `;
 
 const ContentPre = styled.pre`
-  background: #f8f9fb;
+  background: #f0f6ff;
   border-radius: 0.5rem;
   padding: 1.5rem;
   overflow-x: auto;
   margin: 1.5rem 0;
-  border: 1px solid #e5e7eb;
+  border: 1px solid #dbeafe;
 `;
 
 const ContentCode = styled.code`
   font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
-  background: #f1f5f9;
+  background: #dbeafe;
   padding: 0.2rem 0.4rem;
   border-radius: 0.25rem;
   font-size: 0.875rem;
@@ -591,24 +511,63 @@ const ContentOrderedList = styled.ol`
 `;
 
 const ContentListItem = styled.li`
-  color: #4b5563;
+  color: #334155;
   margin-bottom: 0.75rem;
   line-height: 1.7;
 `;
 
 const ContentBlockquote = styled.blockquote`
-  border-left: 4px solid #10b981;
+  border-left: 4px solid #2563eb;
   padding-left: 1.5rem;
   margin: 1.5rem 0;
-  color: #6b7280;
+  color: #93c5fd;
   font-style: italic;
+`;
+
+const Footer = styled.footer`
+  background: #2563eb;
+  color: white;
+  padding: 2rem 0;
+`;
+
+const FooterInner = styled.div`
+  max-width: 80rem;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  @media (max-width: 640px) {
+    flex-direction: column;
+    gap: 1rem;
+  }
+`;
+
+const FooterText = styled.p`
+  color: #dbeafe;
+`;
+
+const FooterStrong = styled.span`
+  font-weight: 600;
+  color: #f6fefb;
+`;
+
+const BackToTop = styled.button`
+  background: none;
+  border: none;
+  color: #dbeafe;
+  font-weight: 500;
+  cursor: pointer;
+  transition: color 0.2s;
+  &:hover {
+    color: white;
+  }
 `;
 
 const Sidebar = styled.aside`
   display: flex;
   flex-direction: column;
   gap: 2rem;
-
   @media (max-width: 1023px) {
     grid-row: 1;
   }
@@ -626,10 +585,9 @@ const SidebarCard = styled.div`
 const SidebarCardTitle = styled.h3`
   font-size: 1.25rem;
   font-weight: 700;
-  color: #1f2937;
+  color: #2563eb;
   margin-bottom: 1.5rem;
   position: relative;
-  
   &::after {
     content: '';
     position: absolute;
@@ -637,7 +595,7 @@ const SidebarCardTitle = styled.h3`
     left: 0;
     width: 2rem;
     height: 2px;
-    background-color: #10b981;
+    background-color: #2563eb;
   }
 `;
 
@@ -648,13 +606,13 @@ const SidebarItem = styled.div`
 const SidebarItemLabel = styled.h4`
   font-size: 0.875rem;
   font-weight: 600;
-  color: #6b7280;
+  color: #93c5fd;
   margin-bottom: 0.5rem;
   text-transform: uppercase;
 `;
 
 const SidebarItemValue = styled.div`
-  color: #1f2937;
+  color: #2563eb;
 `;
 
 const TechStack = styled.div`
@@ -664,8 +622,8 @@ const TechStack = styled.div`
 `;
 
 const TechBadge = styled.span`
-  background: #ecfdf5;
-  color: #10b981;
+  background: #dbeafe;
+  color: #2563eb;
   padding: 0.25rem 0.75rem;
   border-radius: 9999px;
   font-size: 0.75rem;
@@ -674,7 +632,7 @@ const TechBadge = styled.span`
 
 const SidebarButton = styled.a`
   display: inline-block;
-  background-color: #10b981;
+  background-color: #2563eb;
   color: white;
   font-weight: 600;
   padding: 0.75rem 1.5rem;
@@ -683,86 +641,8 @@ const SidebarButton = styled.a`
   text-decoration: none;
   margin-top: 0.5rem;
   transition: background-color 0.2s;
-  
-  &:hover {
-    background-color: #059669;
-  }
-`;
-
-const RelatedProjectsList = styled.div`
-  display: flex;
-  flex-direction: column;
-  gap: 1rem;
-`;
-
-const RelatedProject = styled.div`
-  transition: transform 0.2s;
-  
-  &:hover {
-    transform: translateX(4px);
-  }
-`;
-
-const RelatedProjectLink = styled.a`
-  display: block;
-  text-decoration: none;
-`;
-
-const RelatedProjectTitle = styled.h4`
-  font-size: 1rem;
-  font-weight: 600;
-  color: #1f2937;
-  margin-bottom: 0.25rem;
-  transition: color 0.2s;
-  
-  ${RelatedProjectLink}:hover & {
-    color: #10b981;
-  }
-`;
-
-const RelatedProjectDesc = styled.p`
-  font-size: 0.875rem;
-  color: #6b7280;
-`;
-
-const Footer = styled.footer`
-  background: #1f2937;
-  color: white;
-  padding: 2rem 0;
-`;
-
-const FooterInner = styled.div`
-  max-width: 80rem;
-  margin: 0 auto;
-  padding: 0 1.5rem;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  
-  @media (max-width: 640px) {
-    flex-direction: column;
-    gap: 1rem;
-  }
-`;
-
-const FooterText = styled.p`
-  color: #9ca3af;
-`;
-
-const FooterStrong = styled.span`
-  font-weight: 600;
-  color: #f9fafb;
-`;
-
-const BackToTop = styled.button`
-  background: none;
-  border: none;
-  color: #9ca3af;
-  font-weight: 500;
   cursor: pointer;
-  transition: color 0.2s;
-  
   &:hover {
-    color: white;
+    background-color: #1d4ed8;
   }
 `;

@@ -123,7 +123,6 @@ export async function POST(req: Request) {
       `,
     };
 
-    // Velog API 호출
     const response = await fetch(VELOG_API_URL, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
@@ -136,16 +135,13 @@ export async function POST(req: Request) {
 
     const data = await response.json();
 
-    // 마크다운을 HTML로 변환하여 이미지 URL을 추출
     const postBody = data.data.post.body;
     const isMarkdown = data.data.post.is_markdown;
     const images: string[] = [];
 
     if (isMarkdown) {
-      // 마크다운을 HTML로 변환 
       const htmlContent = await marked(postBody);  
 
-      // <img> 태그에서 이미지 URL을 추출하는 정규식
       const imgRegex = /<img[^>]+src="([^">]+)"/g;
       let match;
       while ((match = imgRegex.exec(htmlContent)) !== null) {
@@ -156,7 +152,7 @@ export async function POST(req: Request) {
     // 결과 반환
     return NextResponse.json({
       ...data,
-      images,  // 추출된 이미지 URL 추가
+      images,  
     });
 
   } catch (error) {

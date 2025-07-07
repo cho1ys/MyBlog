@@ -22,7 +22,6 @@ export async function GET() {
   } catch (error) {
     console.error('에러 발생:', error);
 
-    // ✅ 에러 응답도 Response 타입으로
     return NextResponse.json(
       { error: 'Internal Server Error' },
       { status: 500 }

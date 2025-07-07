@@ -60,7 +60,6 @@ export default function TechStackSection() {
         Tech <SectionTitleHighlight>Stack</SectionTitleHighlight>
       </SectionTitle>
       
-      {/* 정사각형 로고 그리드 섹션 */}
       <TechGrid>
         {TechLogo.map((tech, index) => (
           <TechItem key={index}>
@@ -93,7 +92,6 @@ const TechSection = styled.section`
   }
 `;
 
-// 정사방형 그리드 스타일
 const TechGrid = styled.div`
   max-width: 60rem;
   margin: 0 auto 4rem;

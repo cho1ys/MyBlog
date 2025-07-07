@@ -5,6 +5,7 @@ import dynamic from 'next/dynamic';
 import styled from 'styled-components';
 import { useGitHubData } from './useGitHubData';
 import { useClientOnly } from './useClientOnly';
+import NoteSection from '../components/NoteSection';
 
 // 클라이언트 전용 컴포넌트들을 동적 임포트 (SSR off)
 const HeroSection = dynamic(() => import('../components/HeroSection'), { ssr: false });
@@ -101,6 +102,7 @@ export default function ClientHome() {
       <NavigationHeader scrollPosition={scrollPosition} />
       <TechStackSection />
       <ProjectsSection menuItems={menuItems} />
+      <NoteSection />
       <ProfileSection />
       <Footer />
     </Wrapper>
@@ -117,7 +119,8 @@ export const SectionTitle = styled.h2`
   font-weight: 800;
   color: #1f2937;
   text-align: center;
-  margin-bottom: 3rem;
+  margin-bottom: 5rem;
+  margin-top: -3rem;
 `;
 
 export const SectionTitleHighlight = styled.span`

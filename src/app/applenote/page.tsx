@@ -114,7 +114,7 @@ export default function ProjectDetail() {
             <ProjectMeta>
               <ProjectDate>
                 <DateIcon>📅</DateIcon>
-                2024. 10. 22 - 2024. 11. 05
+                24. 10 ~ 24. 11
               </ProjectDate>
               <ProjectSourceLink 
                 href={postUrl} 
