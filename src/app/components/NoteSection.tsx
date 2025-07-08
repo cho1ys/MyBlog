@@ -165,8 +165,9 @@ const CardDesc = styled.p`
 `;
 
 const TagList = styled.div`
+margin-top : 2rem;
   display: flex;
-  gap: 1.3rem;
+  gap: 1.7rem;
   flex-wrap: wrap;
 `;
 
@@ -174,7 +175,7 @@ const Tag = styled.span`
   background: #a5b4fc;
   color: #3730a3;
   font-size: 0.85rem;
-  padding: 0.2rem 0.7rem;
+  padding: 0.2rem 0.9rem;
   border-radius: 9999px;
   font-weight: 600;
 `; 
