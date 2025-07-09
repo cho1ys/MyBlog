@@ -42,11 +42,6 @@ export default function NavigationHeader({ scrollPosition }: NavigationHeaderPro
       title: 'KUrani',
       path: '/kurani',
     },
-    {
-      id: 5,
-      title: 'E2E 테스트 경험',
-      path: '/e2e-experience',
-    },
   ];
 
   const handleMenuClick = () => {
